@@ -148,6 +148,7 @@ function FullPageMap() {
               value={localRadius}
               onChange={handleSliderChange}
               onMouseUp={commitRadiusChange}
+              onTouchEnd={commitRadiusChange} //for mobile
               onBlur={commitRadiusChange} 
               min="0" 
               max="500" 
@@ -161,9 +162,9 @@ function FullPageMap() {
           Not to be used for navigation purposes. Data may be inaccurate and outdated. Proceed at your own risk.
         </div>
         
-        <div style={{ flexGrow: 1, textAlign: 'right', color: 'white'}}> 
+        {/* <div style={{ flexGrow: 1, textAlign: 'right'}}> 
           About
-        </div>
+        </div> */}
       </div>
 
 
