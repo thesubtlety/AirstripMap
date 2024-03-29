@@ -137,25 +137,35 @@ function FullPageMap() {
     setRadius(localRadius); // Commit the local state to the global state
   };
   
-
   return (
     <div>
-      <div style={{ padding: '10px' }}>
-        <label>
-          Radius (miles): {localRadius}
-          <input 
-            type="range"
-            value={localRadius}
-            onChange={handleSliderChange}
-            onMouseUp={commitRadiusChange}
-            onBlur={commitRadiusChange} 
-            min="0" 
-            max="500" 
-            step="10"
-            style={{ marginLeft: '10px' }} 
-          />
-        </label>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px' }}>
+        <div style={{ flexGrow: 1 }}>
+          <label>
+            Radius (miles): {localRadius}
+            <input 
+              type="range"
+              value={localRadius}
+              onChange={handleSliderChange}
+              onMouseUp={commitRadiusChange}
+              onBlur={commitRadiusChange} 
+              min="0" 
+              max="500" 
+              step="10"
+              style={{ marginLeft: '10px', width: '100%' }}
+            />
+          </label>
+        </div>
+        
+        <div style={{ flexGrow: 3, textAlign: 'center' }}>
+          Not to be used for navigation purposes. Data may be inaccurate and outdated. Proceed at your own risk.
+        </div>
+        
+        <div style={{ flexGrow: 1, textAlign: 'right', color: 'white'}}> 
+          About
+        </div>
       </div>
+
 
       <div style={{ position: 'absolute', top: 150, left: 10, zIndex: 1000, backgroundColor: 'white', padding: '10px', borderRadius: '5px' }}>
       
