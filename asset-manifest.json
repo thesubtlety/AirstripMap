@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/AirstripMap/static/css/main.323d7611.css",
-    "main.js": "/AirstripMap/static/js/main.791735e6.js",
+    "main.js": "/AirstripMap/static/js/main.94f96c20.js",
     "static/js/453.48439ca8.chunk.js": "/AirstripMap/static/js/453.48439ca8.chunk.js",
     "index.html": "/AirstripMap/index.html",
     "main.323d7611.css.map": "/AirstripMap/static/css/main.323d7611.css.map",
-    "main.791735e6.js.map": "/AirstripMap/static/js/main.791735e6.js.map",
+    "main.94f96c20.js.map": "/AirstripMap/static/js/main.94f96c20.js.map",
     "453.48439ca8.chunk.js.map": "/AirstripMap/static/js/453.48439ca8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.323d7611.css",
-    "static/js/main.791735e6.js"
+    "static/js/main.94f96c20.js"
   ]
 }
