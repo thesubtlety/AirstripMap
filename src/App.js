@@ -2,18 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+L.Icon.Default.imagePath='leaflet_images/';
 
-const appname = 'AirstripMap';
-
-L.Icon.Default.imagePath=appname+'/leaflet_images/';
+const path = process.env.PUBLIC_URL;
+const markerPath = `${path}/leaflet_images/marker-icon.png`
 const userLocationIcon = L.icon({
-  iconUrl: appname + '/leaflet_images/marker-icon-user.png',
+  iconUrl: `${path}/leaflet_images/marker-icon-user.png`,
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 });
-const markerPath = `${appname}/leaflet_images/marker-icon.png`;
-
 const createCustomIcon = (fieldName) => {
   return L.divIcon({
     className: "custom-div-icon",
@@ -63,12 +61,12 @@ function FullPageMap() {
   });
   
   const handleOpenModal = (ident) => {
-    setCurrentImageUrl(`${appname}/images/${ident}.png`);
+    setCurrentImageUrl(`${path}/images/${ident}.png`);
     setIsModalOpen(true);
   };
 
   useEffect(() => {
-    fetch(`${appname}/data.json`)
+    fetch(`${path}/data.json`)
       .then(response => response.json())
       .then(data => {
         // Access the 'items' array inside the fetched data
