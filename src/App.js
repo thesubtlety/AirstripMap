@@ -228,7 +228,7 @@ function FullPageMap() {
           <Marker icon={createCustomIcon(filteredItem.name)} key={filteredItem.id} position={[filteredItem.latitude, filteredItem.longitude]}>
             <Popup>
               <div style={{ fontSize: '16px', marginBottom: '5px' }}>
-                <strong>{filteredItem.name}</strong> (ID: {filteredItem.id})
+                <strong>{filteredItem.name}</strong> ({filteredItem.id})
               </div>
               <div style={{ fontSize: '14px' }}>
                 <strong>Elevation:</strong> {filteredItem.elevation} ft
@@ -245,9 +245,13 @@ function FullPageMap() {
               <div style={{ fontSize: '14px' }}>
                 <strong>Meals:</strong> {filteredItem.meals ? 'Nearby' : 'No'}
               </div>
+             <div style={{ fontSize: '14px' }}>
+                <a href="#" onClick={() => handleOpenModal(filteredItem.id)}>View State Directory Image</a>
+             </div>
               <div style={{ fontSize: '14px' }}>
-                <a href="#" onClick={() => handleOpenModal(filteredItem.id)}>View Image</a>
+                <a target="tab" href={`https://www.airnav.com/airport/${filteredItem.id}`}>View on AirNav </a>
               </div>
+              
             </Popup>
           </Marker>
         ))}
