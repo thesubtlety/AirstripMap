@@ -100,24 +100,6 @@ function FullPageMap() {
     );
   }, []);
 
-  // // Distance calculation function
-  // function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
-  //   var R = 3958.8; // Radius of the earth in miles
-  //   var dLat = deg2rad(lat2 - lat1);
-  //   var dLon = deg2rad(lon2 - lon1);
-  //   var a =
-  //     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-  //     Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-  //     Math.sin(dLon / 2) * Math.sin(dLon / 2);
-  //   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  //   var distance = R * c; // Distance in miles
-  //   return distance;
-  // }
-
-  // function deg2rad(deg) {
-  //   return deg * (Math.PI / 180);
-  // }
-
   const handleSetLocationFromIdentifier = () => {
     // Assuming `items` is your state holding the array of locations from data.json
     const foundLocation = items.find(item => item.id === locationIdentifier);
@@ -158,19 +140,20 @@ function FullPageMap() {
           </label>
         </div>
         
-        <div style={{ flexGrow: 3, textAlign: 'center' }}>
+        <div style={{ flexGrow: 2, textAlign: 'right'}}> 
+          <b>Airstrip Map</b>
+        </div>
+
+        <div style={{ flexGrow: 2, textAlign: 'right', fontSize: 'small' , paddingLeft: '5px'}}>
           Not to be used for navigation purposes. Data may be inaccurate and outdated. Proceed at your own risk.
         </div>
         
-        {/* <div style={{ flexGrow: 1, textAlign: 'right'}}> 
-          About
-        </div> */}
       </div>
 
 
-      <div style={{ position: 'absolute', top: 150, left: 10, zIndex: 1000, backgroundColor: 'white', padding: '10px', borderRadius: '5px' }}>
+      <div style={{ position: 'absolute', top: 70, left: 65, zIndex: 1000, backgroundColor: 'white', padding: '10px', borderRadius: '5px' }}>
       
-      <h4>Enter Airport Identifier</h4>
+      <b>Airport Identifier</b> <br/>
       <input
         type="text"
         placeholder="Location Identifier"
@@ -181,7 +164,9 @@ function FullPageMap() {
         Enter
       </button>
       
-      <h4>Filter Options</h4>
+      <br/><br/>
+      <b>Filter Options</b>
+      <br/>
       <div>
         <input
           type="checkbox"
