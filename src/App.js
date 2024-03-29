@@ -83,7 +83,7 @@ function FullPageMap() {
   
         setItems(parsedItems);
       })
-      .catch(error => console.error("Failed to load data.json:", error));
+      .catch(error => console.error("Failed to load data:", error));
   }, []);
   
 
@@ -246,10 +246,11 @@ function FullPageMap() {
                 <strong>Meals:</strong> {filteredItem.meals ? 'Nearby' : 'No'}
               </div>
              <div style={{ fontSize: '14px' }}>
-                <a href="#" onClick={() => handleOpenModal(filteredItem.id)}>View State Directory Image</a>
+                <a href="#" onClick={() => handleOpenModal(filteredItem.id)}>View Directory Image</a>
              </div>
               <div style={{ fontSize: '14px' }}>
-                <a target="tab" href={`https://www.airnav.com/airport/${filteredItem.id}`}>View on AirNav </a>
+                <a target="tab" href={`https://www.airnav.com/airport/${filteredItem.id}`}>AirNav</a> | 
+                <a target="tab" href={`https://www.skyvector.com/airport/${filteredItem.id}`}>SkyVector</a>
               </div>
               
             </Popup>
