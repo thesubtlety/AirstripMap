@@ -2,19 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-L.Icon.Default.imagePath='leaflet_images/';
 
+const appname = 'AirstripMap';
+
+L.Icon.Default.imagePath=appname+'/leaflet_images/';
 const userLocationIcon = L.icon({
-  iconUrl: '/leaflet_images/marker-icon-user.png', // Adjust path to your icon
+  iconUrl: appname + '/leaflet_images/marker-icon-user.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 });
+const markerPath = `${appname}/leaflet_images/marker-icon.png`;
 
 const createCustomIcon = (fieldName) => {
   return L.divIcon({
     className: "custom-div-icon",
-    html: `<div style="text-align: center;"><b>${fieldName}</b></div><img src="/leaflet_images/marker-icon.png" style="width: 25px; height: 41px;"/>`,
+    html: `<div style="text-align: center;"><b>${fieldName}</b></div><img src=${markerPath} style="width: 25px; height: 41px;"/>`,
     iconSize: [25, 41],
     iconAnchor: [12, 56], // Adjust based on the actual size of your icon + text height
     popupAnchor: [0, -56], // Adjust based on iconAnchor to align popup correctly
@@ -60,12 +63,12 @@ function FullPageMap() {
   });
   
   const handleOpenModal = (ident) => {
-    setCurrentImageUrl('images/' + ident + '.png');
+    setCurrentImageUrl(`${appname}/images/${ident}.png`);
     setIsModalOpen(true);
   };
 
   useEffect(() => {
-    fetch('/data.json')
+    fetch(`${appname}/data.json`)
       .then(response => response.json())
       .then(data => {
         // Access the 'items' array inside the fetched data
