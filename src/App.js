@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -6,16 +6,28 @@ L.Icon.Default.imagePath='leaflet_images/';
 
 const path = process.env.PUBLIC_URL;
 const markerPath = `${path}/leaflet_images/marker-icon.png`
+const markerPathGrey = `${path}/leaflet_images/marker-icon-gray.png`
+
 const userLocationIcon = L.icon({
   iconUrl: `${path}/leaflet_images/marker-icon-user.png`,
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 });
-const createCustomIcon = (fieldName) => {
+const coloredIcon  = (fieldName) => {
   return L.divIcon({
     className: "custom-div-icon",
     html: `<div style="text-align: center;"><b>${fieldName}</b></div><img src=${markerPath} style="width: 25px; height: 41px;"/>`,
+    iconSize: [25, 41],
+    iconAnchor: [12, 56], // Adjust based on the actual size of your icon + text height
+    popupAnchor: [0, -56], // Adjust based on iconAnchor to align popup correctly
+  });
+};
+
+const greyIcon = (fieldName) => {
+  return L.divIcon({
+    className: "custom-div-icon",
+    html: `<div style="text-align: center;"><b>${fieldName}</b></div><img src=${markerPathGrey} style="width: 25px; height: 41px;"/>`,
     iconSize: [25, 41],
     iconAnchor: [12, 56], // Adjust based on the actual size of your icon + text height
     popupAnchor: [0, -56], // Adjust based on iconAnchor to align popup correctly
@@ -51,7 +63,8 @@ function FullPageMap() {
   const [locationIdentifier, setLocationIdentifier] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageUrl, setCurrentImageUrl] = useState('');
-
+  const [isTextBoxVisible, setIsTextBoxVisible] = useState(false);
+  const textBoxRef = useRef(null);
 
   const [filter, setFilter] = useState({
     courtesy_car: false,
@@ -64,6 +77,19 @@ function FullPageMap() {
     setCurrentImageUrl(`${path}/images/${ident}.png`);
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (textBoxRef.current && !textBoxRef.current.contains(event.target)) {
+        setIsTextBoxVisible(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     fetch(`${path}/data.json`)
@@ -119,6 +145,11 @@ function FullPageMap() {
     setRadius(localRadius); // Commit the local state to the global state
   };
   
+  function determineIcon(item) {
+    const isInteresting = item.courtesy_car || item.bicycles || item.camping || item.meals;
+    return isInteresting ? coloredIcon(item.name) : greyIcon(item.name);
+  }
+
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px' }}>
@@ -145,11 +176,10 @@ function FullPageMap() {
         </div>
 
         <div style={{ flexGrow: 2, textAlign: 'right', fontSize: 'small' , paddingLeft: '5px'}}>
-          Not to be used for navigation purposes. Data may be inaccurate and outdated. Proceed at your own risk.
+          A better $100 hamburger finder. Data may be inaccurate and outdated. Proceed at your own risk.
         </div>
         
       </div>
-
 
       <div style={{ position: 'absolute', top: 70, left: 65, zIndex: 1000, backgroundColor: 'white', padding: '10px', borderRadius: '5px' }}>
       
@@ -205,6 +235,16 @@ function FullPageMap() {
       </div>
     </div>
 
+    <div style={{ position: 'fixed', bottom: '50px', left: '50px', zIndex: 100 }}>
+      <button onClick={() => setIsTextBoxVisible(!isTextBoxVisible)}>
+        ℹ️ {/* Placeholder for an info icon */}
+      </button>d
+      {isTextBoxVisible && (
+        <div ref={textBoxRef} style={{ marginTop: '10px', border: '1px solid #ccc', padding: '10px', backgroundColor: 'white' }}>
+          This site uses data from state airport directories to highlight interesting destinations and easily pull up the directory image. Data is only as good as the what is published.
+        </div>
+      )}
+    </div>
 
       <MapContainer style={{ height: '100vh', width: '100vw' }} center={userLocation || [48.192, -114.316]} zoom={8}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -217,12 +257,16 @@ function FullPageMap() {
           </>
         )}
         {items.length > 0 && items.filter(item => 
-            (filter.courtesy_car ? item.courtesy_car : true) &&
-            (filter.bicycles ? item.bicycles : true) &&
-            (filter.camping ? item.camping : true) &&
-            (filter.meals ? item.meals : true)
+          (filter.courtesy_car ? item.courtesy_car : true) &&
+          (filter.bicycles ? item.bicycles : true) &&
+          (filter.camping ? item.camping : true) &&
+          (filter.meals ? item.meals : true)
         ).map(filteredItem => (
-          <Marker icon={createCustomIcon(filteredItem.name)} key={filteredItem.id} position={[filteredItem.latitude, filteredItem.longitude]}>
+          <Marker 
+            icon={determineIcon(filteredItem)} 
+            key={filteredItem.id} 
+            position={[filteredItem.latitude, filteredItem.longitude]}
+          >
             <Popup>
               <div style={{ fontSize: '16px', marginBottom: '5px' }}>
                 <strong>{filteredItem.name}</strong> ({filteredItem.id})
@@ -230,32 +274,33 @@ function FullPageMap() {
               <div style={{ fontSize: '14px' }}>
                 <strong>Elevation:</strong> {filteredItem.elevation} ft
               </div>
+              {filteredItem.courtesy_car && (
+                <div style={{ fontSize: '14px' }}><strong>Courtesy Car:</strong> Yes</div>
+              )}
+              {filteredItem.bicycles && (
+                <div style={{ fontSize: '14px' }}><strong>Bicycles:</strong> Available</div>
+              )}
+              {filteredItem.camping && (
+                <div style={{ fontSize: '14px' }}><strong>Camping:</strong> Yes</div>
+              )}
+              {filteredItem.meals && (
+                <div style={{ fontSize: '14px' }}><strong>Meals:</strong> Nearby</div>
+              )}
               <div style={{ fontSize: '14px' }}>
-                <strong>Courtesy Car:</strong> {filteredItem.courtesy_car ? 'Yes' : 'No'}
-              </div>
-              <div style={{ fontSize: '14px' }}>
-                <strong>Bicycles:</strong> {filteredItem.bicycles ? 'Available' : 'Not Available'}
-              </div>
-              <div style={{ fontSize: '14px' }}>
-                <strong>Camping:</strong> {filteredItem.camping ? 'Yes' : 'No'}
-              </div>
-              <div style={{ fontSize: '14px' }}>
-                <strong>Meals:</strong> {filteredItem.meals ? 'Nearby' : 'No'}
-              </div>
-             <div style={{ fontSize: '14px' }}>
                 <a href="#" onClick={() => handleOpenModal(filteredItem.id)}>View Directory Image</a>
-             </div>
-              <div style={{ fontSize: '14px' }}>
-                <a target="tab" href={`https://www.airnav.com/airport/${filteredItem.id}`}>AirNav</a> | 
-                <a target="tab" href={`https://www.skyvector.com/airport/${filteredItem.id}`}>SkyVector</a>
               </div>
-              
+              <div style={{ fontSize: '14px' }}>
+                <a target="_blank" rel="noopener noreferrer" href={`https://www.airnav.com/airport/${filteredItem.id}`}>AirNav</a> | 
+                <a target="_blank" rel="noopener noreferrer" href={`https://www.skyvector.com/airport/${filteredItem.id}`}>SkyVector</a>
+              </div>
             </Popup>
           </Marker>
         ))}
+
       </MapContainer>
       <ImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} imageUrl={currentImageUrl} />
     </div>
+    
   );
 }
 
