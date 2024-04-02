@@ -112,9 +112,8 @@ function FullPageMap() {
       })
       .catch(error => console.error("Failed to load data:", error));
   }, []);
-  
 
-  useEffect(() => {
+  const getUserLocation = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
@@ -124,7 +123,7 @@ function FullPageMap() {
         console.log("Unable to retrieve your location");
       }
     );
-  }, []);
+  };
 
   const handleSetLocationFromIdentifier = () => {
     // Assuming `items` is your state holding the array of locations from data.json
@@ -182,66 +181,80 @@ function FullPageMap() {
       </div>
 
       <div style={{ position: 'absolute', top: 70, left: 65, zIndex: 1000, backgroundColor: 'white', padding: '10px', borderRadius: '5px' }}>
-      
-      <b>Airport Identifier</b> <br/>
-      <input
-        type="text"
-        placeholder="Location Identifier"
-        value={locationIdentifier}
-        onChange={(e) => setLocationIdentifier(e.target.value.toUpperCase())} // Assuming identifiers are uppercase
-      />
-      <button onClick={handleSetLocationFromIdentifier}>
-        Enter
-      </button>
-      
-      <br/><br/>
-      <b>Filter Options</b>
-      <br/>
-      <div>
+        <b>Airport Identifier</b> <br/>
         <input
-          type="checkbox"
-          id="courtesy_car"
-          checked={filter.courtesy_car}
-          onChange={e => setFilter({ ...filter, courtesy_car: e.target.checked })}
+          type="text"
+          placeholder="Location Identifier"
+          value={locationIdentifier}
+          onChange={(e) => setLocationIdentifier(e.target.value.toUpperCase())} // Assuming identifiers are uppercase
         />
-        <label htmlFor="courtesy_car">Courtesy Car</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="bicycles"
-          checked={filter.bicycles}
-          onChange={e => setFilter({ ...filter, bicycles: e.target.checked })}
-        />
-        <label htmlFor="bicycles">Bicycles</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="camping"
-          checked={filter.camping}
-          onChange={e => setFilter({ ...filter, camping: e.target.checked })}
-        />
-        <label htmlFor="camping">Camping</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="meals"
-          checked={filter.meals}
-          onChange={e => setFilter({ ...filter, meals: e.target.checked })}
-        />
-        <label htmlFor="meals">Meals</label>
-      </div>
+        <button onClick={handleSetLocationFromIdentifier}>
+        🔎
+        </button>
+        
+        <br/><br/>
+        <b>Filter Options</b>
+        <br/>
+        <div>
+          <input
+            type="checkbox"
+            id="courtesy_car"
+            checked={filter.courtesy_car}
+            onChange={e => setFilter({ ...filter, courtesy_car: e.target.checked })}
+          />
+          <label htmlFor="courtesy_car">Courtesy Car</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="bicycles"
+            checked={filter.bicycles}
+            onChange={e => setFilter({ ...filter, bicycles: e.target.checked })}
+          />
+          <label htmlFor="bicycles">Bicycles</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="camping"
+            checked={filter.camping}
+            onChange={e => setFilter({ ...filter, camping: e.target.checked })}
+          />
+          <label htmlFor="camping">Camping</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="meals"
+            checked={filter.meals}
+            onChange={e => setFilter({ ...filter, meals: e.target.checked })}
+          />
+          <label htmlFor="meals">Meals</label>
+        </div>
     </div>
-
-    <div style={{ position: 'fixed', bottom: '50px', left: '50px', zIndex: 100 }}>
+    <div>
+      <button 
+        onClick={getUserLocation} 
+        style={{
+          position: 'absolute',
+          bottom: '100px',
+          right: '30px',
+          zIndex: 1000,
+          fontSize: '24px',
+          cursor: 'pointer'
+        }}
+      >
+        ⌖
+      </button>
+    </div>
+    
+    <div style={{ position: 'absolute', top: '70px', right: '24px', zIndex: 1000, fontSize: '24px', }}>
       <button onClick={() => setIsTextBoxVisible(!isTextBoxVisible)}>
-        ℹ️ {/* Placeholder for an info icon */}
-      </button>d
+        ℹ
+      </button>
       {isTextBoxVisible && (
-        <div ref={textBoxRef} style={{ marginTop: '10px', border: '1px solid #ccc', padding: '10px', backgroundColor: 'white' }}>
-          This site uses data from state airport directories to highlight interesting destinations and easily pull up the directory image. Data is only as good as the what is published.
+        <div ref={textBoxRef} style={{ fontSize: '18px', marginTop: '10px', border: '1px solid #ccc', padding: '10px', backgroundColor: 'white', maxWidth: '400px' }}>
+          This site features public airport destinations using data from state airport directories, including directory images. The quality of data depends on what's published in these directories. The goal is to make it easier to find interesting places to fly to and explore.
         </div>
       )}
     </div>
