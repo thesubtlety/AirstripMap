@@ -2025,17 +2025,6 @@
             "meals": true
         },
         {
-            "id": "HRF",
-            "name": "Ravalli County Airport",
-            "latitude": 46.251499,
-            "longitude": -114.125569,
-            "elevation": "3642",
-            "courtesy_car": false,
-            "bicycles": false,
-            "camping": false,
-            "meals": true
-        },
-        {
             "id": "ID28",
             "name": "Mackay Bar Airport",
             "latitude": 45.3798,
@@ -5796,17 +5785,6 @@
             "bicycles": false,
             "camping": false,
             "meals": true
-        },
-        {
-            "id": "32S",
-            "name": "Stevensville Airport",
-            "latitude": 46.52510070800781,
-            "longitude": -114.0530014038086,
-            "elevation": "3610",
-            "courtesy_car": false,
-            "bicycles": false,
-            "camping": false,
-            "meals": false
         },
         {
             "id": "9S4",
@@ -12849,17 +12827,6 @@
             "meals": false
         },
         {
-            "id": "PUW",
-            "name": "Pullman Moscow Regional Airport",
-            "latitude": 46.7439,
-            "longitude": -117.110001,
-            "elevation": "2556",
-            "courtesy_car": false,
-            "bicycles": false,
-            "camping": false,
-            "meals": false
-        },
-        {
             "id": "PLU",
             "name": "Pierce County-Thun Field",
             "latitude": 47.103901,
@@ -14350,17 +14317,6 @@
             "latitude": 42.7606010437,
             "longitude": -87.8152008057,
             "elevation": "674",
-            "courtesy_car": false,
-            "bicycles": false,
-            "camping": false,
-            "meals": false
-        },
-        {
-            "id": "RGK",
-            "name": "Red Wing Regional Airport",
-            "latitude": 44.589401,
-            "longitude": -92.485001,
-            "elevation": "778",
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
