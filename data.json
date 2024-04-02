@@ -1915,17 +1915,6 @@
             "meals": true
         },
         {
-            "id": "HRF",
-            "name": "Ravalli County Airport",
-            "latitude": 46.251499,
-            "longitude": -114.125569,
-            "elevation": 3642,
-            "courtesy_car": false,
-            "bicycles": false,
-            "camping": false,
-            "meals": true
-        },
-        {
             "id": "U94",
             "name": "Hazelton Municipal Airport",
             "latitude": 42.576312,
@@ -3342,7 +3331,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "00F",
@@ -3463,7 +3452,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "S04",
@@ -3474,7 +3463,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "S01",
@@ -3529,7 +3518,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "H28",
@@ -3562,7 +3551,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "DLN",
@@ -3573,7 +3562,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "M26",
@@ -3584,7 +3573,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "5U1",
@@ -3628,7 +3617,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "88M",
@@ -3639,7 +3628,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "5U5",
@@ -3672,7 +3661,7 @@
             "courtesy_car": false,
             "bicycles": true,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "1S3",
@@ -3683,7 +3672,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "79S",
@@ -3793,7 +3782,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "48S",
@@ -3826,7 +3815,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "HLN",
@@ -3859,7 +3848,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "S09",
@@ -3892,7 +3881,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "GPI",
@@ -3936,7 +3925,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "80S",
@@ -3947,7 +3936,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "LC0",
@@ -4035,7 +4024,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "MSO",
@@ -4079,7 +4068,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "PWD",
@@ -4156,7 +4145,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "RPX",
@@ -4233,7 +4222,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": true,
-            "meals": true
+            "meals": false
         },
         {
             "id": "M35",
@@ -4266,7 +4255,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "8U4",
@@ -4302,17 +4291,6 @@
             "meals": true
         },
         {
-            "id": "32S",
-            "name": "Stevensville Airport",
-            "latitude": 46.52510070800781,
-            "longitude": -114.0530014038086,
-            "elevation": "3610",
-            "courtesy_car": false,
-            "bicycles": false,
-            "camping": false,
-            "meals": true
-        },
-        {
             "id": "9S4",
             "name": "Mineral County Airport",
             "latitude": 47.16830062866211,
@@ -4321,7 +4299,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "7S8",
@@ -4343,7 +4321,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "THM",
@@ -4475,7 +4453,7 @@
             "courtesy_car": false,
             "bicycles": true,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "9U1",
@@ -4508,7 +4486,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "7S4",
@@ -4541,7 +4519,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "WH0",
@@ -6100,17 +6078,6 @@
             "latitude": 44.0452995300293,
             "longitude": -103.05699920654297,
             "elevation": "3204",
-            "courtesy_car": true,
-            "bicycles": false,
-            "camping": false,
-            "meals": true
-        },
-        {
-            "id": "1D8",
-            "name": "Redfield Municipal Airport",
-            "latitude": 44.86249923706055,
-            "longitude": -98.52950286865234,
-            "elevation": "1307",
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
@@ -11347,17 +11314,6 @@
             "latitude": 46.21340179,
             "longitude": -119.7910004,
             "elevation": "697",
-            "courtesy_car": false,
-            "bicycles": false,
-            "camping": false,
-            "meals": false
-        },
-        {
-            "id": "PUW",
-            "name": "Pullman Moscow Regional Airport",
-            "latitude": 46.7439,
-            "longitude": -117.110001,
-            "elevation": "2556",
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
