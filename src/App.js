@@ -23,7 +23,6 @@ const coloredIcon  = (fieldName) => {
     popupAnchor: [0, -56], // Adjust based on iconAnchor to align popup correctly
   });
 };
-
 const greyIcon = (fieldName) => {
   return L.divIcon({
     className: "custom-div-icon",
@@ -65,6 +64,7 @@ function FullPageMap() {
   const [currentImageUrl, setCurrentImageUrl] = useState('');
   const [isTextBoxVisible, setIsTextBoxVisible] = useState(false);
   const textBoxRef = useRef(null);
+  const mapRef = useRef(null);
 
   const [filter, setFilter] = useState({
     courtesy_car: false,
@@ -113,28 +113,6 @@ function FullPageMap() {
       .catch(error => console.error("Failed to load data:", error));
   }, []);
 
-  const getUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setUserLocation([latitude, longitude]);
-      },
-      () => {
-        console.log("Unable to retrieve your location");
-      }
-    );
-  };
-
-  const handleSetLocationFromIdentifier = () => {
-    // Assuming `items` is your state holding the array of locations from data.json
-    const foundLocation = items.find(item => item.id === locationIdentifier);
-    if (foundLocation) {
-      setUserLocation([foundLocation.latitude, foundLocation.longitude]);
-    } else {
-      alert('Location identifier not found.');
-    }
-  };
-
   const handleSliderChange = (event) => {
     const newValue = Number(event.target.value);
     setLocalRadius(newValue); // This updates the local state with the new slider value
@@ -148,6 +126,30 @@ function FullPageMap() {
     const isInteresting = item.courtesy_car || item.bicycles || item.camping || item.meals;
     return isInteresting ? coloredIcon(item.name) : greyIcon(item.name);
   }
+
+  const getUserLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setUserLocation([latitude, longitude]);
+        mapRef.current.flyTo([latitude, longitude],8);
+      },
+      () => {
+        console.log("Unable to retrieve your location");
+      }
+    );
+  };
+
+  const handleSetLocationFromIdentifier = () => {
+    // Assuming `items` is your state holding the array of locations from data.json
+    const foundLocation = items.find(item => item.id === locationIdentifier);
+    if (foundLocation) {
+      setUserLocation([foundLocation.latitude, foundLocation.longitude]);
+      mapRef.current.flyTo([foundLocation.latitude, foundLocation.longitude],8);
+    } else {
+      alert('Location identifier not found.');
+    }
+  };
 
   return (
     <div>
@@ -259,7 +261,12 @@ function FullPageMap() {
       )}
     </div>
 
-      <MapContainer style={{ height: '100vh', width: '100vw' }} center={userLocation || [48.192, -114.316]} zoom={8}>
+      <MapContainer 
+        style={{ height: '100vh', width: '100vw' }}
+        center={userLocation || [48.192, -114.316]}
+        zoom={8} 
+        ref={mapRef}
+      >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {userLocation && (
           <>
