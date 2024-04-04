@@ -2025,6 +2025,17 @@
             "meals": true
         },
         {
+            "id": "HRF",
+            "name": "Ravalli County Airport",
+            "latitude": 46.251499,
+            "longitude": -114.125569,
+            "elevation": "3642",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": true
+        },
+        {
             "id": "ID28",
             "name": "Mackay Bar Airport",
             "latitude": 45.3798,
@@ -5787,6 +5798,17 @@
             "meals": true
         },
         {
+            "id": "32S",
+            "name": "Stevensville Airport",
+            "latitude": 46.52510070800781,
+            "longitude": -114.0530014038086,
+            "elevation": "3610",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": false
+        },
+        {
             "id": "9S4",
             "name": "Mineral County Airport",
             "latitude": 47.16830062866211,
@@ -7786,7 +7808,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "67T",
@@ -7819,7 +7841,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E38",
@@ -7852,7 +7874,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "1E7",
@@ -7874,7 +7896,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "AMA",
@@ -7907,7 +7929,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T00",
@@ -7915,7 +7937,7 @@
             "latitude": 29.770099639892578,
             "longitude": -94.66239929199219,
             "elevation": "21",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -7940,7 +7962,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "81D",
@@ -7951,7 +7973,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "LBX",
@@ -7962,7 +7984,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "T39",
@@ -7995,7 +8017,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "F44",
@@ -8006,7 +8028,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "ATA",
@@ -8028,7 +8050,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "EDC",
@@ -8050,7 +8072,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E30",
@@ -8061,7 +8083,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "BYY",
@@ -8072,7 +8094,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "HPY",
@@ -8083,7 +8105,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "54T",
@@ -8091,10 +8113,10 @@
             "latitude": 29.7617,
             "longitude": -94.846497,
             "elevation": "30",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "BMT",
@@ -8105,7 +8127,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "BPT",
@@ -8116,7 +8138,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "BEA",
@@ -8138,7 +8160,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E41",
@@ -8160,7 +8182,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "07R",
@@ -8171,7 +8193,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "F00",
@@ -8182,7 +8204,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "BGD",
@@ -8215,7 +8237,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "BKD",
@@ -8226,7 +8248,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "11R",
@@ -8237,7 +8259,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "XBP",
@@ -8259,7 +8281,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "BRO",
@@ -8292,7 +8314,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "BMQ",
@@ -8314,7 +8336,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "RWV",
@@ -8336,7 +8358,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "HHF",
@@ -8347,7 +8369,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "7F5",
@@ -8355,7 +8377,7 @@
             "latitude": 32.588401,
             "longitude": -95.863116,
             "elevation": "500",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -8380,7 +8402,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "CVB",
@@ -8424,7 +8446,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "CDS",
@@ -8435,7 +8457,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "3T8",
@@ -8468,7 +8490,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E34",
@@ -8479,7 +8501,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "LBR",
@@ -8501,7 +8523,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "6R3",
@@ -8512,7 +8534,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "7F7",
@@ -8523,7 +8545,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "COM",
@@ -8534,7 +8556,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "CLL",
@@ -8545,7 +8567,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T32",
@@ -8600,7 +8622,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "55T",
@@ -8633,7 +8655,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "COT",
@@ -8644,7 +8666,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E13",
@@ -8666,7 +8688,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "8F3",
@@ -8677,7 +8699,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "20R",
@@ -8688,7 +8710,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T71",
@@ -8721,7 +8743,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "ADS",
@@ -8743,7 +8765,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "1F7",
@@ -8765,7 +8787,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "DAL",
@@ -8787,7 +8809,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "DFW",
@@ -8820,7 +8842,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "58T",
@@ -8831,7 +8853,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "09T",
@@ -8875,7 +8897,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E57",
@@ -8916,7 +8938,7 @@
             "latitude": 34.5667,
             "longitude": -102.322998,
             "elevation": "3883",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -8930,7 +8952,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "9F0",
@@ -8985,7 +9007,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "EBG",
@@ -8996,7 +9018,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "26R",
@@ -9007,7 +9029,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "ELP",
@@ -9062,7 +9084,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "41F",
@@ -9073,7 +9095,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T93",
@@ -9106,7 +9128,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "50F",
@@ -9117,7 +9139,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "AFW",
@@ -9131,17 +9153,6 @@
             "meals": true
         },
         {
-            "id": "FTW",
-            "name": "Fort Worth Meacham International Airport",
-            "latitude": 32.819801,
-            "longitude": -97.362396,
-            "elevation": "710",
-            "courtesy_car": true,
-            "bicycles": false,
-            "camping": false,
-            "meals": false
-        },
-        {
             "id": "FWS",
             "name": "Fort Worth Spinks Airport",
             "latitude": 32.56520080566406,
@@ -9150,7 +9161,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "T67",
@@ -9161,7 +9172,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "4T2",
@@ -9183,7 +9194,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T25",
@@ -9213,10 +9224,10 @@
             "latitude": 27.88360023498535,
             "longitude": -98.60030364990234,
             "elevation": "564",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "X54",
@@ -9224,7 +9235,7 @@
             "latitude": 34.654202,
             "longitude": -102.692,
             "elevation": "4003",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -9249,7 +9260,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "GLS",
@@ -9257,7 +9268,7 @@
             "latitude": 29.265300750732422,
             "longitude": -94.86039733886719,
             "elevation": "6",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -9271,7 +9282,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "8T6",
@@ -9279,10 +9290,10 @@
             "latitude": 28.362801,
             "longitude": -98.116501,
             "elevation": "129",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "GTU",
@@ -9293,7 +9304,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "GYB",
@@ -9304,7 +9315,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "JXI",
@@ -9315,7 +9326,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "07F",
@@ -9370,7 +9381,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "RPH",
@@ -9414,7 +9425,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "33R",
@@ -9436,7 +9447,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "34R",
@@ -9444,7 +9455,7 @@
             "latitude": 29.389999389648438,
             "longitude": -96.95610046386719,
             "elevation": "278",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -9469,7 +9480,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "15F",
@@ -9480,7 +9491,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "LHB",
@@ -9513,7 +9524,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "HRX",
@@ -9524,7 +9535,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "1X1",
@@ -9546,7 +9557,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "HDO",
@@ -9601,7 +9612,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "EFD",
@@ -9623,7 +9634,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "IAH",
@@ -9667,7 +9678,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "LVJ",
@@ -9700,7 +9711,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "HOU",
@@ -9711,7 +9722,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "UTS",
@@ -9722,7 +9733,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "TFP",
@@ -9755,7 +9766,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "JSO",
@@ -9766,7 +9777,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "JAS",
@@ -9777,7 +9788,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "22F",
@@ -9799,7 +9810,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "6F7",
@@ -9807,7 +9818,7 @@
             "latitude": 32.826499938964844,
             "longitude": -94.35440063476562,
             "elevation": "320",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": true,
             "meals": false
@@ -9865,7 +9876,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "ILE",
@@ -9876,7 +9887,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "IKG",
@@ -9887,7 +9898,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T12",
@@ -9895,10 +9906,10 @@
             "latitude": 30.645795,
             "longitude": -93.913643,
             "elevation": "121",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "F75",
@@ -9909,7 +9920,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "45R",
@@ -9920,7 +9931,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "29F",
@@ -9928,10 +9939,10 @@
             "latitude": 34.392251,
             "longitude": -101.759918,
             "elevation": "3500",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E58",
@@ -9953,7 +9964,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T41",
@@ -9964,7 +9975,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "RYW",
@@ -9986,7 +9997,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "3R9",
@@ -10008,7 +10019,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "LZZ",
@@ -10019,7 +10030,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "LNC",
@@ -10030,7 +10041,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "LRD",
@@ -10041,7 +10052,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "49R",
@@ -10063,7 +10074,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T78",
@@ -10074,7 +10085,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "7T0",
@@ -10085,7 +10096,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "LIU",
@@ -10129,7 +10140,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "GGG",
@@ -10140,7 +10151,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "T26",
@@ -10184,7 +10195,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "51R",
@@ -10195,7 +10206,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "3T2",
@@ -10203,7 +10214,7 @@
             "latitude": 29.48,
             "longitude": -95.327202,
             "elevation": "55",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -10217,7 +10228,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T15",
@@ -10239,7 +10250,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T92",
@@ -10250,7 +10261,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "MFE",
@@ -10261,7 +10272,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E48",
@@ -10305,7 +10316,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T50",
@@ -10338,7 +10349,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "3E0",
@@ -10346,7 +10357,7 @@
             "latitude": 35.71390151977539,
             "longitude": -100.60299682617188,
             "elevation": "2720",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -10371,7 +10382,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "7T7",
@@ -10382,7 +10393,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T56",
@@ -10404,7 +10415,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "3F9",
@@ -10423,7 +10434,7 @@
             "latitude": 32.742199,
             "longitude": -95.496498,
             "elevation": "434",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -10437,7 +10448,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E01",
@@ -10445,7 +10456,7 @@
             "latitude": 31.582500457764,
             "longitude": -102.90899658203,
             "elevation": "2615",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -10481,7 +10492,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "F53",
@@ -10514,7 +10525,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "OCH",
@@ -10525,7 +10536,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "60R",
@@ -10547,7 +10558,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "61R",
@@ -10569,7 +10580,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "ONY",
@@ -10580,7 +10591,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "ORG",
@@ -10591,7 +10602,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "OZA",
@@ -10602,7 +10613,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "3F6",
@@ -10610,7 +10621,7 @@
             "latitude": 34.027599,
             "longitude": -100.281998,
             "elevation": "1860",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -10624,7 +10635,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "PSN",
@@ -10635,7 +10646,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T13",
@@ -10646,7 +10657,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "PPA",
@@ -10657,7 +10668,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T45",
@@ -10668,7 +10679,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "PRX",
@@ -10701,7 +10712,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "PEQ",
@@ -10723,7 +10734,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T24",
@@ -10745,7 +10756,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "PVW",
@@ -10756,7 +10767,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "PEZ",
@@ -10789,7 +10800,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "PIL",
@@ -10811,7 +10822,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T05",
@@ -10833,7 +10844,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "5F1",
@@ -10844,7 +10855,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "3T9",
@@ -10855,7 +10866,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "PRS",
@@ -10863,7 +10874,7 @@
             "latitude": 29.634212,
             "longitude": -104.361493,
             "elevation": "",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -10874,7 +10885,7 @@
             "latitude": 34.277101,
             "longitude": -99.7593,
             "elevation": "1602",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -10899,7 +10910,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "49F",
@@ -10921,7 +10932,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T76",
@@ -10943,7 +10954,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "52F",
@@ -10954,7 +10965,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "RBO",
@@ -10987,7 +10998,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "ECU",
@@ -10998,7 +11009,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T48",
@@ -11020,7 +11031,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T54",
@@ -11053,7 +11064,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "SJT",
@@ -11064,7 +11075,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "5C1",
@@ -11086,7 +11097,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "SKF",
@@ -11141,7 +11152,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "T94",
@@ -11152,7 +11163,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "78R",
@@ -11163,7 +11174,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "81R",
@@ -11171,7 +11182,7 @@
             "latitude": 31.235200881958008,
             "longitude": -98.71700286865234,
             "elevation": "1249",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -11196,7 +11207,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "6X8",
@@ -11240,7 +11251,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "60F",
@@ -11248,10 +11259,10 @@
             "latitude": 33.64870071411133,
             "longitude": -99.2605972290039,
             "elevation": "1344",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "2F1",
@@ -11262,7 +11273,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "SWI",
@@ -11295,7 +11306,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "F49",
@@ -11306,7 +11317,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T28",
@@ -11339,7 +11350,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "SOA",
@@ -11361,7 +11372,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "88R",
@@ -11383,7 +11394,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "63F",
@@ -11394,7 +11405,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "SEP",
@@ -11438,7 +11449,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "2KL",
@@ -11460,7 +11471,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "2F4",
@@ -11482,7 +11493,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "68F",
@@ -11493,7 +11504,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "TPL",
@@ -11504,7 +11515,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "TRL",
@@ -11537,7 +11548,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "TYR",
@@ -11548,7 +11559,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "UVA",
@@ -11559,7 +11570,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "9F1",
@@ -11570,7 +11581,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "VHN",
@@ -11581,7 +11592,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "E52",
@@ -11592,7 +11603,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "F05",
@@ -11603,7 +11614,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "VCT",
@@ -11614,7 +11625,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "PWG",
@@ -11647,7 +11658,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "73F",
@@ -11691,7 +11702,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "TXW",
@@ -11724,7 +11735,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T59",
@@ -11732,10 +11743,10 @@
             "latitude": 35.45109939575195,
             "longitude": -100.19999694824219,
             "elevation": "2470",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T29",
@@ -11757,7 +11768,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "SPS",
@@ -11765,10 +11776,10 @@
             "latitude": 33.9888,
             "longitude": -98.491898,
             "elevation": "1019",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "F14",
@@ -11779,7 +11790,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "76F",
@@ -11790,7 +11801,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "INK",
@@ -11801,7 +11812,7 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "T90",
@@ -11812,7 +11823,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "F51",
@@ -11845,7 +11856,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "T85",
@@ -11864,7 +11875,7 @@
             "latitude": 26.968799591099998,
             "longitude": -99.2489013672,
             "elevation": "422",
-            "courtesy_car": false,
+            "courtesy_car": true,
             "bicycles": false,
             "camping": false,
             "meals": true
@@ -11878,7 +11889,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "73T",
@@ -11911,7 +11922,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "T57",
@@ -11922,7 +11933,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "T95",
@@ -12821,6 +12832,17 @@
             "latitude": 46.21340179,
             "longitude": -119.7910004,
             "elevation": "697",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": false
+        },
+        {
+            "id": "PUW",
+            "name": "Pullman Moscow Regional Airport",
+            "latitude": 46.7439,
+            "longitude": -117.110001,
+            "elevation": "2556",
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
@@ -14317,6 +14339,17 @@
             "latitude": 42.7606010437,
             "longitude": -87.8152008057,
             "elevation": "674",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": false
+        },
+        {
+            "id": "RGK",
+            "name": "Red Wing Regional Airport",
+            "latitude": 44.589401,
+            "longitude": -92.485001,
+            "elevation": "778",
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
