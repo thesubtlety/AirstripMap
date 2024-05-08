@@ -177,7 +177,7 @@ function FullPageMap() {
         </div>
 
         <div style={{ flexGrow: 2, textAlign: 'right', fontSize: 'small' , paddingLeft: '5px'}}>
-          A better $100 hamburger finder. Data may be inaccurate and outdated. Proceed at your own risk.
+          A map with state airport directory data and pdf images. Data may be inaccurate and outdated. Proceed at your own risk.
         </div>
         
       </div>

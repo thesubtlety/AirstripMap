@@ -1,6 +1,6 @@
 {
   "short_name": "AirstripMap",
-  "name": "Find and filter nearby airports",
+  "name": "Find and filter nearby airports from state directories",
   "icons": [
     {
       "src": "favicon.ico",
