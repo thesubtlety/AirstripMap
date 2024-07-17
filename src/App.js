@@ -14,23 +14,34 @@ const userLocationIcon = L.icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 });
-const coloredIcon  = (fieldName) => {
+const createColoredIcon = (fieldName, size) => {
   return L.divIcon({
     className: "custom-div-icon",
-    html: `<div style="text-align: center;"><b>${fieldName}</b></div><img src=${markerPath} style="width: 25px; height: 41px;"/>`,
-    iconSize: [25, 41],
-    iconAnchor: [12, 56], // Adjust based on the actual size of your icon + text height
-    popupAnchor: [0, -56], // Adjust based on iconAnchor to align popup correctly
+    html: `<div style="text-align: center; font-size:${size.fontSize}px"><b>${fieldName}</b></div><img src=${markerPath} style="width: ${size.width}px; height: ${size.height}px;"/>`,
+    iconSize: [size.width, size.height],
+    iconAnchor: [size.width / 2, size.height],
+    popupAnchor: [0, -size.height],
   });
 };
-const greyIcon = (fieldName) => {
+
+const createGreyIcon = (fieldName, size) => {
   return L.divIcon({
     className: "custom-div-icon",
-    html: `<div style="text-align: center;"><b>${fieldName}</b></div><img src=${markerPathGrey} style="width: 25px; height: 41px;"/>`,
-    iconSize: [25, 41],
-    iconAnchor: [12, 56], // Adjust based on the actual size of your icon + text height
-    popupAnchor: [0, -56], // Adjust based on iconAnchor to align popup correctly
+    html: `<div style="text-align: center; font-size:${size.fontSize}px"><b>${fieldName}</b></div><img src=${markerPathGrey} style="width: ${size.width}px; height: ${size.height}px;"/>`,
+    iconSize: [size.width, size.height],
+    iconAnchor: [size.width / 2, size.height],
+    popupAnchor: [0, -size.height],
   });
+};
+
+const getIconSize = (zoomLevel) => {
+  if (zoomLevel > 7) {
+    return { width: 20, height: 35, fontSize: 12  };
+  } else if (zoomLevel > 6  ) {
+    return { width: 15, height: 25, fontSize: 10 };
+  } else {
+    return { width: 13, height: 20, fontSize: 8  };
+  }
 };
 
 function ImageModal({ isOpen, onClose, imageUrl }) {
@@ -65,6 +76,7 @@ function FullPageMap() {
   const [isTextBoxVisible, setIsTextBoxVisible] = useState(false);
   const textBoxRef = useRef(null);
   const mapRef = useRef(null);
+  const markersRef = useRef([]);
 
   const [filter, setFilter] = useState({
     courtesy_car: false,
@@ -124,7 +136,7 @@ function FullPageMap() {
   
   function determineIcon(item) {
     const isInteresting = item.courtesy_car || item.bicycles || item.camping || item.meals;
-    return isInteresting ? coloredIcon(item.name) : greyIcon(item.name);
+    return isInteresting ? createColoredIcon(item.name, getIconSize(mapRef.current.getZoom())) : createGreyIcon(item.name, getIconSize(mapRef.current.getZoom()));
   }
 
   const getUserLocation = () => {
@@ -150,6 +162,34 @@ function FullPageMap() {
       alert('Location identifier not found.');
     }
   };
+
+  useEffect(() => {
+    const map = mapRef.current;
+
+    const adjustIconSize = (zoomLevel) => {
+      const newSize = getIconSize(zoomLevel);
+      markersRef.current.forEach(marker => {
+        if (marker) { // Ensure marker is not null
+          const fieldName = marker.options.fieldName;
+          if (marker.options.type === 'colored') {
+            marker.setIcon(createColoredIcon(fieldName, newSize));
+          } else if (marker.options.type === 'grey') {
+            marker.setIcon(createGreyIcon(fieldName, newSize));
+          }
+        }
+      });
+    };
+
+    if (map) {
+      map.on('zoomend', () => {
+        const zoomLevel = map.getZoom();
+        console.log('zoom level: ' + zoomLevel);
+        adjustIconSize(zoomLevel);
+      });
+
+      adjustIconSize(map.getZoom());
+    }
+  }, []);
 
   return (
     <div>
@@ -286,7 +326,9 @@ function FullPageMap() {
             icon={determineIcon(filteredItem)} 
             key={filteredItem.id} 
             position={[filteredItem.latitude, filteredItem.longitude]}
-          >
+            ref={(marker) => { if (marker) markersRef.current.push(marker); }}
+            options={{ fieldName: filteredItem.name, type: filteredItem.courtesy_car || filteredItem.bicycles || filteredItem.camping || filteredItem.meals ? 'colored' : 'grey' }}
+           >
             <Popup>
               <div style={{ fontSize: '16px', marginBottom: '5px' }}>
                 <strong>{filteredItem.name}</strong> ({filteredItem.id})
