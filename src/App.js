@@ -256,7 +256,7 @@ function FullPageMap() {
       </button>
       {isTextBoxVisible && (
         <div ref={textBoxRef} style={{ fontSize: '18px', marginTop: '10px', border: '1px solid #ccc', padding: '10px', backgroundColor: 'white', maxWidth: '400px' }}>
-          This site features public airport destinations using data from state airport directories, including directory images. The quality of data depends on what's published in these directories. The goal is to make it easier to find interesting places to fly to and explore.
+          This site features public airport destinations using data from state airport directories, including directory images. The quality of data depends on what's published in these directories. Some states don't publish these and those airports won't be identified here. Check out other great resources like pirep.io and skyvector.com.
         </div>
       )}
     </div>
