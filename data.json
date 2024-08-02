@@ -837,6 +837,105 @@
             "meals": true
         },
         {
+            "id": "D74",
+            "name": "Chorman Airport",
+            "latitude": 38.849672,
+            "longitude": -75.61284,
+            "elevation": "66",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": true
+        },
+        {
+            "id": "33N",
+            "name": "Delaware Airpark",
+            "latitude": 39.21874,
+            "longitude": -75.600424,
+            "elevation": "56",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": true
+        },
+        {
+            "id": "",
+            "name": "Clearwater Airport",
+            "latitude": 63.027313,
+            "longitude": -147.187185,
+            "elevation": "2900",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": false
+        },
+        {
+            "id": "15N",
+            "name": "Jenkins Airport",
+            "latitude": 39.119598388671875,
+            "longitude": -75.58380126953125,
+            "elevation": "53",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": true
+        },
+        {
+            "id": "N06",
+            "name": "Laurel Airport",
+            "latitude": 38.542198,
+            "longitude": -75.594398,
+            "elevation": "30",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": false
+        },
+        {
+            "id": "ILG",
+            "name": "New Castle Airport",
+            "latitude": 39.67869949,
+            "longitude": -75.60649872,
+            "elevation": "80",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": true
+        },
+        {
+            "id": "38N",
+            "name": "Smyrna Airport",
+            "latitude": 39.3036003112793,
+            "longitude": -75.58390045166016,
+            "elevation": "18",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": true
+        },
+        {
+            "id": "EVY",
+            "name": "Summit Airport",
+            "latitude": 39.520401,
+            "longitude": -75.720398,
+            "elevation": "70",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": false
+        },
+        {
+            "id": "GED",
+            "name": "Delaware Coastal Airport",
+            "latitude": 38.689201,
+            "longitude": -75.358902,
+            "elevation": "53",
+            "courtesy_car": false,
+            "bicycles": false,
+            "camping": false,
+            "meals": false
+        },
+        {
             "id": "F47",
             "name": "St George Island Airport",
             "latitude": 29.645999908447266,
