@@ -36,12 +36,14 @@ const createGreyIcon = (fieldName, size) => {
 };
 
 const getIconSize = (zoomLevel) => {
-  if (zoomLevel > 7) {
-    return { width: 20, height: 35, fontSize: 12  };
-  } else if (zoomLevel > 6  ) {
+  if (zoomLevel > 10) {
+    return { width: 25, height: 40, fontSize: 14 };
+  } else if (zoomLevel > 7) {
+    return { width: 20, height: 35, fontSize: 12 };
+  } else if (zoomLevel > 6) {
     return { width: 15, height: 25, fontSize: 10 };
   } else {
-    return { width: 13, height: 20, fontSize: 8  };
+    return { width: 13, height: 20, fontSize: 8 };
   }
 };
 
