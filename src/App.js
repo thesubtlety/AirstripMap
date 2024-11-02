@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import Fuse from 'fuse.js';
 L.Icon.Default.imagePath='leaflet_images/';
 
 const path = process.env.PUBLIC_URL;
@@ -141,15 +142,21 @@ function FullPageMap() {
   };
 
   const handleSetLocationFromIdentifier = () => {
-    // Assuming `items` is your state holding the array of locations from data.json
-    const foundLocation = items.find(item => item.id === locationIdentifier);
-    if (foundLocation) {
-      setUserLocation([foundLocation.latitude, foundLocation.longitude]);
-      mapRef.current.flyTo([foundLocation.latitude, foundLocation.longitude],8);
+    const fuse = new Fuse(items, {
+        keys: ['id', 'name'],      // Specify fields to search by
+        threshold: 0.3,            // Adjust this to control match sensitivity (0 = exact match, 1 = match anything)
+    });
+
+    const results = fuse.search(locationIdentifier);
+    
+    if (results.length > 0) {
+        const foundLocation = results[0].item; // Get the first matching result
+        setUserLocation([foundLocation.latitude, foundLocation.longitude]);
+        mapRef.current.flyTo([foundLocation.latitude, foundLocation.longitude], 8);
     } else {
-      alert('Location identifier not found.');
+        alert('Location identifier not found.');
     }
-  };
+};
 
   return (
     <div>
