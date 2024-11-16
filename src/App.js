@@ -226,7 +226,7 @@ function FullPageMap() {
         </div>
 
         <div style={{ flexGrow: 2, textAlign: 'right', fontSize: 'small' , paddingLeft: '5px'}}>
-          A map with state airport directory data and pdf images. Data may be inaccurate and outdated. Proceed at your own risk.
+          A worse $100 hamburager finder with state airport directory info and pdf images. Data may be inaccurate and outdated. Proceed at your own risk.
         </div>
         
       </div>
