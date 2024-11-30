@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import './App.css';
 import L from 'leaflet';
 import Fuse from 'fuse.js';
 L.Icon.Default.imagePath='leaflet_images/';
@@ -226,7 +227,7 @@ function FullPageMap() {
         </div>
 
         <div style={{ flexGrow: 2, textAlign: 'right', fontSize: 'small' , paddingLeft: '5px'}}>
-          A worse $100 hamburager finder with state airport directory info and pdf images. Data may be inaccurate and outdated. Proceed at your own risk.
+          A worse $100 hamburger finder with state airport directory info and pdf images. Data may be inaccurate and outdated. Proceed at your own risk.
         </div>
         
       </div>
@@ -239,73 +240,52 @@ function FullPageMap() {
           value={locationIdentifier}
           onChange={(e) => setLocationIdentifier(e.target.value.toUpperCase())} // Assuming identifiers are uppercase
         />
-        <button onClick={handleSetLocationFromIdentifier}>
+        <button onClick={handleSetLocationFromIdentifier}
+          className="search-button">
         🔎
         </button>
-        
+
         <br/><br/>
-        <b>Filter Options</b>
-        <br/>
         <div>
-          <input
-            type="checkbox"
-            id="courtesy_car"
-            checked={filter.courtesy_car}
-            onChange={e => setFilter({ ...filter, courtesy_car: e.target.checked })}
-          />
-          <label htmlFor="courtesy_car">Courtesy Car</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            id="bicycles"
-            checked={filter.bicycles}
-            onChange={e => setFilter({ ...filter, bicycles: e.target.checked })}
-          />
-          <label htmlFor="bicycles">Bicycles</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            id="camping"
-            checked={filter.camping}
-            onChange={e => setFilter({ ...filter, camping: e.target.checked })}
-          />
-          <label htmlFor="camping">Camping</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            id="meals"
-            checked={filter.meals}
-            onChange={e => setFilter({ ...filter, meals: e.target.checked })}
-          />
-          <label htmlFor="meals">Meals</label>
-        </div>
+          <b className="filter-title">Filter Options</b>
+        {['courtesy_car', 'bicycles', 'camping', 'meals'].map((option) => (
+          <div key={option} className="filter-option">
+            <input
+              type="checkbox"
+              id={option}
+              checked={filter[option]}
+              onChange={(e) => setFilter({ ...filter, [option]: e.target.checked })}
+              className="filter-checkbox"
+            />
+            <label htmlFor={option} className="filter-label">
+              {option.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
+            </label>
+          </div>
+        ))}
+      </div>
+
     </div>
     <div>
       <button 
         onClick={getUserLocation} 
-        style={{
-          position: 'absolute',
-          bottom: '100px',
-          right: '30px',
-          zIndex: 1000,
-          fontSize: '24px',
-          cursor: 'pointer'
-        }}
+        className='location-button'
       >
         ⌖
       </button>
     </div>
     
     <div style={{ position: 'absolute', top: '70px', right: '24px', zIndex: 1000, fontSize: '24px', }}>
-      <button onClick={() => setIsTextBoxVisible(!isTextBoxVisible)}>
+      <button onClick={() => setIsTextBoxVisible(!isTextBoxVisible)}
+      className="icon-button"
+        >
         ℹ
       </button>
       {isTextBoxVisible && (
-        <div ref={textBoxRef} style={{ fontSize: '18px', marginTop: '10px', border: '1px solid #ccc', padding: '10px', backgroundColor: 'white', maxWidth: '400px' }}>
-          This site features public airport destinations using data from state airport directories, including directory images. The quality of data depends on what's published in these directories. Some states don't publish these and those airports won't be identified here. Check out other great resources like pirep.io and skyvector.com.
+        <div ref={textBoxRef} style={{ fontSize: '18px', marginTop: '10px', border: '1px solid #ccc', padding: '10px', backgroundColor: 'white', maxWidth: '400px', padding: '20px', borderRadius: '10px',  }}>
+          This site features public airport destinations using data from state airport directories, including directory images.
+          <br/><br/>The quality of data depends on what's published in these directories. 
+          <br/><br/>Some states don't publish these and those airports won't be identified here.
+          <br/><br/>Check out other great resources like pirep.io and skyvector.com.
         </div>
       )}
     </div>
@@ -343,8 +323,28 @@ function FullPageMap() {
                 <strong>{filteredItem.name}</strong> ({filteredItem.id})
               </div>
               <div style={{ fontSize: '14px' }}>
-                <strong>Elevation:</strong> {filteredItem.elevation} ft
+                {filteredItem.elevation}' MSL
               </div>
+
+              <div style={{ marginBottom: '10px', textAlign: 'center' }}>
+              {filteredItem.id ? (
+                <img 
+                  src={`${path}/images/${filteredItem.id}.png`}
+                  alt={`${filteredItem.name} Preview`} 
+                  style={{
+                    maxWidth: '100%', 
+                    height: 'auto', 
+                    maxHeight: '100px', 
+                    borderRadius: '5px', 
+                    border: '1px solid #ccc'
+                  }} 
+                  onClick={() => handleOpenModal(filteredItem.id)}
+                />
+              ) : (
+                <span style={{ fontSize: '12px', color: '#999' }}>No image available</span>
+              )}
+            </div>
+
               {filteredItem.courtesy_car && (
                 <div style={{ fontSize: '14px' }}><strong>Courtesy Car:</strong> Yes</div>
               )}
@@ -357,11 +357,9 @@ function FullPageMap() {
               {filteredItem.meals && (
                 <div style={{ fontSize: '14px' }}><strong>Meals:</strong> Nearby</div>
               )}
+              <br/>
               <div style={{ fontSize: '14px' }}>
-                <a href="#" onClick={() => handleOpenModal(filteredItem.id)}>View Directory Image</a>
-              </div>
-              <div style={{ fontSize: '14px' }}>
-                <a target="_blank" rel="noopener noreferrer" href={`https://www.airnav.com/airport/${filteredItem.id}`}>AirNav</a> | 
+                <a target="_blank" rel="noopener noreferrer" href={`https://www.airnav.com/airport/${filteredItem.id}`}>AirNav</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a target="_blank" rel="noopener noreferrer" href={`https://www.skyvector.com/airport/${filteredItem.id}`}>SkyVector</a>
               </div>
             </Popup>
