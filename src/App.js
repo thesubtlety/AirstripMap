@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import './App.css';
 import L from 'leaflet';
 import Fuse from 'fuse.js';
+import MarkerClusterGroup from 'react-leaflet-markercluster'
 L.Icon.Default.imagePath='leaflet_images/';
 
 const path = process.env.PUBLIC_URL;
@@ -305,6 +306,25 @@ function FullPageMap() {
             <Circle center={userLocation} radius={radius * 1609.34} /> {/* Convert miles to meters */}
           </>
         )}
+        <MarkerClusterGroup
+            showCoverageOnHover={false}
+            spiderfyOnEveryZoom={true}
+            iconCreateFunction={(cluster) => {
+              const count = cluster.getChildCount();
+              return L.divIcon({
+                html: `
+                  <div style="position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <img src="${markerPath}" style="width: 40px; height: 40px;" />
+                    <div style="position: absolute; bottom: 0; right: 0; background: rgba(0,0,0,0.7); color: #fff; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center;">
+                      ${count}
+                    </div>
+                  </div>
+                `,
+                className: 'marker-cluster-custom',
+                iconSize: [40, 40],
+              });
+            }}
+          >
         {items.length > 0 && items.filter(item => 
           (filter.courtesy_car ? item.courtesy_car : true) &&
           (filter.bicycles ? item.bicycles : true) &&
@@ -365,6 +385,7 @@ function FullPageMap() {
             </Popup>
           </Marker>
         ))}
+        </MarkerClusterGroup>
 
       </MapContainer>
       <ImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} imageUrl={currentImageUrl} />
