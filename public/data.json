@@ -13643,8 +13643,8 @@
         {
             "id": "3U3",
             "name": "Bowman Field",
-            "latitude": 46.153099060058594,
-            "longitude": -112.86799621582031,
+            "latitude": 46.153099,
+            "longitude": -112.867996,
             "elevation": "5034",
             "courtesy_car": false,
             "bicycles": false,
@@ -13653,14 +13653,14 @@
         },
         {
             "id": "3U4",
-            "name": "St Labre Mission Airport",
-            "latitude": 45.599998474121094,
-            "longitude": -106.26699829101562,
+            "name": "Saint Labre Mission Airport",
+            "latitude": 45.606617,
+            "longitude": -106.27445,
             "elevation": "2909",
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "3U5",
@@ -13742,8 +13742,8 @@
         {
             "id": "3U9",
             "name": "Boulder Airport",
-            "latitude": 46.21160125732422,
-            "longitude": -112.10600280761719,
+            "latitude": 46.211601,
+            "longitude": -112.106003,
             "elevation": "4968",
             "courtesy_car": false,
             "bicycles": false,
@@ -13752,9 +13752,9 @@
         },
         {
             "id": "BZN",
-            "name": "Gallatin Field",
-            "latitude": 45.77750015,
-            "longitude": -111.1529999,
+            "name": "Bozeman Yellowstone International Airport",
+            "latitude": 45.7775,
+            "longitude": -111.153,
             "elevation": "4473",
             "courtesy_car": false,
             "bicycles": false,
@@ -13852,8 +13852,8 @@
         {
             "id": "CII",
             "name": "Choteau Airport",
-            "latitude": 47.82830047607422,
-            "longitude": -112.16799926757812,
+            "latitude": 47.8283,
+            "longitude": -112.167999,
             "elevation": "3947",
             "courtesy_car": true,
             "bicycles": false,
@@ -13902,7 +13902,7 @@
             "courtesy_car": false,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "S01",
@@ -13984,8 +13984,8 @@
         {
             "id": "5U0",
             "name": "Denton Airport",
-            "latitude": 47.32080078125,
-            "longitude": -109.94200134277344,
+            "latitude": 47.320801,
+            "longitude": -109.942001,
             "elevation": "3592",
             "courtesy_car": false,
             "bicycles": false,
@@ -14028,8 +14028,8 @@
         {
             "id": "8U3",
             "name": "Scobey Border Station /East Poplar International/ Airport",
-            "latitude": 48.99949264526367,
-            "longitude": -105.39899444580078,
+            "latitude": 48.999493,
+            "longitude": -105.398994,
             "elevation": "2501",
             "courtesy_car": false,
             "bicycles": false,
@@ -14039,8 +14039,8 @@
         {
             "id": "97M",
             "name": "Ekalaka Airport",
-            "latitude": 45.87779998779297,
-            "longitude": -104.53700256347656,
+            "latitude": 45.8778,
+            "longitude": -104.537003,
             "elevation": "3503",
             "courtesy_car": true,
             "bicycles": false,
@@ -14072,8 +14072,8 @@
         {
             "id": "5U5",
             "name": "Fairfield Airport",
-            "latitude": 47.62910079956055,
-            "longitude": -111.9800033569336,
+            "latitude": 47.629101,
+            "longitude": -111.980003,
             "elevation": "3989",
             "courtesy_car": false,
             "bicycles": false,
@@ -14105,8 +14105,8 @@
         {
             "id": "1S3",
             "name": "Tillitt Field",
-            "latitude": 46.27109909057617,
-            "longitude": -106.6240005493164,
+            "latitude": 46.271099,
+            "longitude": -106.624001,
             "elevation": "2727",
             "courtesy_car": false,
             "bicycles": false,
@@ -14149,8 +14149,8 @@
         {
             "id": "29S",
             "name": "Gardiner Airport",
-            "latitude": 45.04990005493164,
-            "longitude": -110.74700164794922,
+            "latitude": 45.0499,
+            "longitude": -110.747002,
             "elevation": "5286",
             "courtesy_car": false,
             "bicycles": false,
@@ -14170,7 +14170,7 @@
         },
         {
             "id": "GGW",
-            "name": "Wokal Field/Glasgow-Valley County Airport",
+            "name": "Glasgow Valley County Airport Wokal Field",
             "latitude": 48.212502,
             "longitude": -106.614998,
             "elevation": "2296",
@@ -14182,8 +14182,8 @@
         {
             "id": "GDV",
             "name": "Dawson Community Airport",
-            "latitude": 47.13869858,
-            "longitude": -104.8069992,
+            "latitude": 47.137658,
+            "longitude": -104.80691,
             "elevation": "2458",
             "courtesy_car": true,
             "bicycles": false,
@@ -14221,13 +14221,13 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "48S",
             "name": "Harlem Airport",
-            "latitude": 48.56610107421875,
-            "longitude": -108.77300262451172,
+            "latitude": 48.566101,
+            "longitude": -108.773003,
             "elevation": "2643",
             "courtesy_car": false,
             "bicycles": false,
@@ -14236,7 +14236,7 @@
         },
         {
             "id": "HWQ",
-            "name": "Wheatland County At Harlowton Airport",
+            "name": "Wheatland County Airport at Harlowton",
             "latitude": 46.448601,
             "longitude": -109.852997,
             "elevation": "4311",
@@ -14248,8 +14248,8 @@
         {
             "id": "HVR",
             "name": "Havre City County Airport",
-            "latitude": 48.542999,
-            "longitude": -109.762001,
+            "latitude": 48.541387,
+            "longitude": -109.762859,
             "elevation": "2591",
             "courtesy_car": false,
             "bicycles": false,
@@ -14270,8 +14270,8 @@
         {
             "id": "6U5",
             "name": "Hinsdale Airport",
-            "latitude": 48.38750076293945,
-            "longitude": -107.06900024414062,
+            "latitude": 48.387646,
+            "longitude": -107.083264,
             "elevation": "2220",
             "courtesy_car": false,
             "bicycles": false,
@@ -14303,8 +14303,8 @@
         {
             "id": "6U7",
             "name": "Hysham Airport",
-            "latitude": 46.289398193359375,
-            "longitude": -107.19599914550781,
+            "latitude": 46.293483,
+            "longitude": -107.193649,
             "elevation": "2624",
             "courtesy_car": false,
             "bicycles": false,
@@ -14314,8 +14314,8 @@
         {
             "id": "JDN",
             "name": "Jordan Airport",
-            "latitude": 47.3288002014,
-            "longitude": -106.95300293,
+            "latitude": 47.3288,
+            "longitude": -106.953003,
             "elevation": "2662",
             "courtesy_car": false,
             "bicycles": false,
@@ -14331,13 +14331,13 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "S27",
             "name": "Kalispell City Airport",
-            "latitude": 48.1786003112793,
-            "longitude": -114.30400085449219,
+            "latitude": 48.1786,
+            "longitude": -114.304001,
             "elevation": "2932",
             "courtesy_car": true,
             "bicycles": false,
@@ -14358,8 +14358,8 @@
         {
             "id": "6S8",
             "name": "Laurel Municipal Airport",
-            "latitude": 45.70309829711914,
-            "longitude": -108.76100158691406,
+            "latitude": 45.703098,
+            "longitude": -108.761002,
             "elevation": "3517",
             "courtesy_car": true,
             "bicycles": false,
@@ -14369,8 +14369,8 @@
         {
             "id": "80S",
             "name": "Lavina Airport",
-            "latitude": 46.30720138549805,
-            "longitude": -108.95600128173828,
+            "latitude": 46.307201,
+            "longitude": -108.956001,
             "elevation": "3490",
             "courtesy_car": false,
             "bicycles": false,
@@ -14391,8 +14391,8 @@
         {
             "id": "LWT",
             "name": "Lewistown Municipal Airport",
-            "latitude": 47.04930114746094,
-            "longitude": -109.46700286865234,
+            "latitude": 47.048429,
+            "longitude": -109.466143,
             "elevation": "4170",
             "courtesy_car": true,
             "bicycles": false,
@@ -14413,12 +14413,12 @@
         {
             "id": "S69",
             "name": "Lincoln Airport",
-            "latitude": 46.95439911,
-            "longitude": -112.6500015,
+            "latitude": 46.954399,
+            "longitude": -112.650002,
             "elevation": "4603",
             "courtesy_car": true,
             "bicycles": true,
-            "camping": false,
+            "camping": true,
             "meals": true
         },
         {
@@ -14457,8 +14457,8 @@
         {
             "id": "MLS",
             "name": "Miles City Airport - Frank Wiley Field",
-            "latitude": 46.428001,
-            "longitude": -105.886002,
+            "latitude": 46.427268,
+            "longitude": -105.885372,
             "elevation": "2630",
             "courtesy_car": true,
             "bicycles": false,
@@ -14523,8 +14523,8 @@
         {
             "id": "8S1",
             "name": "Polson Airport",
-            "latitude": 47.69540023803711,
-            "longitude": -114.18499755859375,
+            "latitude": 47.6954,
+            "longitude": -114.184998,
             "elevation": "2941",
             "courtesy_car": true,
             "bicycles": false,
@@ -14556,8 +14556,8 @@
         {
             "id": "7U8",
             "name": "Richey Airport",
-            "latitude": 47.62670135498047,
-            "longitude": -105.07599639892578,
+            "latitude": 47.62647,
+            "longitude": -105.079569,
             "elevation": "2493",
             "courtesy_car": false,
             "bicycles": false,
@@ -14644,8 +14644,8 @@
         {
             "id": "9S2",
             "name": "Scobey Airport",
-            "latitude": 48.807701110839844,
-            "longitude": -105.43900299072266,
+            "latitude": 48.807565,
+            "longitude": -105.439253,
             "elevation": "2432",
             "courtesy_car": true,
             "bicycles": false,
@@ -14666,8 +14666,8 @@
         {
             "id": "M35",
             "name": "Lindey's Landing West Seaplane Base",
-            "latitude": 47.174400329589844,
-            "longitude": -113.4800033569336,
+            "latitude": 47.1744,
+            "longitude": -113.480003,
             "elevation": "3993",
             "courtesy_car": true,
             "bicycles": false,
@@ -14688,13 +14688,13 @@
         {
             "id": "SDY",
             "name": "Sidney - Richland Regional Airport",
-            "latitude": 47.706902,
-            "longitude": -104.193001,
+            "latitude": 47.705141,
+            "longitude": -104.194422,
             "elevation": "1985",
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": false
+            "meals": true
         },
         {
             "id": "8U4",
@@ -14704,7 +14704,7 @@
             "elevation": "3670",
             "courtesy_car": false,
             "bicycles": false,
-            "camping": false,
+            "camping": true,
             "meals": false
         },
         {
@@ -14732,8 +14732,8 @@
         {
             "id": "32S",
             "name": "Stevensville Airport",
-            "latitude": 46.52510070800781,
-            "longitude": -114.0530014038086,
+            "latitude": 46.525101,
+            "longitude": -114.053001,
             "elevation": "3610",
             "courtesy_car": false,
             "bicycles": false,
@@ -14743,8 +14743,8 @@
         {
             "id": "9S4",
             "name": "Mineral County Airport",
-            "latitude": 47.16830062866211,
-            "longitude": -114.85399627685547,
+            "latitude": 47.168301,
+            "longitude": -114.853996,
             "elevation": "2787",
             "courtesy_car": true,
             "bicycles": false,
@@ -14754,8 +14754,8 @@
         {
             "id": "7S8",
             "name": "Ross International Airport",
-            "latitude": 48.998600006103516,
-            "longitude": -111.97799682617188,
+            "latitude": 48.9986,
+            "longitude": -111.977997,
             "elevation": "3552",
             "courtesy_car": false,
             "bicycles": false,
@@ -14765,8 +14765,8 @@
         {
             "id": "8U6",
             "name": "Terry Airport",
-            "latitude": 46.777099609375,
-            "longitude": -105.31300354003906,
+            "latitude": 46.777141,
+            "longitude": -105.313069,
             "elevation": "2283",
             "courtesy_car": false,
             "bicycles": false,
@@ -14782,13 +14782,13 @@
             "courtesy_car": true,
             "bicycles": false,
             "camping": false,
-            "meals": true
+            "meals": false
         },
         {
             "id": "9S5",
             "name": "Three Forks Airport",
-            "latitude": 45.87810134887695,
-            "longitude": -111.56900024414062,
+            "latitude": 45.878101,
+            "longitude": -111.569,
             "elevation": "4089",
             "courtesy_car": false,
             "bicycles": true,
@@ -14820,8 +14820,8 @@
         {
             "id": "57S",
             "name": "Troy Airport",
-            "latitude": 48.480201721191406,
-            "longitude": -115.90399932861328,
+            "latitude": 48.480202,
+            "longitude": -115.903999,
             "elevation": "2017",
             "courtesy_car": false,
             "bicycles": false,
@@ -14831,8 +14831,8 @@
         {
             "id": "9U0",
             "name": "Turner Airport",
-            "latitude": 48.85419845581055,
-            "longitude": -108.40899658203125,
+            "latitude": 48.854198,
+            "longitude": -108.408997,
             "elevation": "3049",
             "courtesy_car": false,
             "bicycles": false,
@@ -14875,12 +14875,12 @@
         {
             "id": "WYS",
             "name": "Yellowstone Airport",
-            "latitude": 44.68840027,
-            "longitude": -111.1179962,
+            "latitude": 44.6884,
+            "longitude": -111.117996,
             "elevation": "6649",
             "courtesy_car": true,
             "bicycles": true,
-            "camping": false,
+            "camping": true,
             "meals": false
         },
         {
@@ -14963,8 +14963,8 @@
         {
             "id": "OLF",
             "name": "L M Clayton Airport",
-            "latitude": 48.094501495399996,
-            "longitude": -105.574996948,
+            "latitude": 48.094501,
+            "longitude": -105.574997,
             "elevation": "1986",
             "courtesy_car": true,
             "bicycles": false,
