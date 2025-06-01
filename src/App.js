@@ -309,6 +309,7 @@ function FullPageMap() {
         <MarkerClusterGroup
             showCoverageOnHover={false}
             spiderfyOnEveryZoom={true}
+            disableClusteringAtZoom={8}
             iconCreateFunction={(cluster) => {
               const count = cluster.getChildCount();
               return L.divIcon({
