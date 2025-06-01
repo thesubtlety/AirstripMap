@@ -348,10 +348,10 @@ function FullPageMap() {
           (filter.bicycles ? item.bicycles : true) &&
           (filter.camping ? item.camping : true) &&
           (filter.meals ? item.meals : true)
-        ).map(filteredItem => (
+        ).map((filteredItem, index) => (
           <Marker 
             icon={determineIcon(filteredItem)} 
-            key={filteredItem.id} 
+            key={filteredItem.id || `airport-${index}`} 
             position={[filteredItem.latitude, filteredItem.longitude]}
             ref={(marker) => { if (marker) markersRef.current.push(marker); }}
             options={{ fieldName: filteredItem.name, type: filteredItem.courtesy_car || filteredItem.bicycles || filteredItem.camping || filteredItem.meals ? 'colored' : 'grey' }}

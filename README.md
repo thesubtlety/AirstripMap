@@ -14,7 +14,7 @@ State airport directories occasionally have extra information like "bicycles in 
 - **Interactive Map**: Search and explore public airports across the United States
 - **State Directory PDFs**: Access original state airport directory images and information
 - **Smart Filtering**: Filter airports by amenities (courtesy cars, meals, bicycles, camping)
-- **Location Search**: Find airports by identifier (e.g., "KORD", "JFK") 
+- **Location Search**: Find airports by identifier (e.g., "MYL", "3U7") 
 - **Radius Search**: Set custom search radius from your location or any point
 
 ## 🗺️ Data Sources
