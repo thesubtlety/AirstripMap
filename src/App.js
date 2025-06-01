@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Circle, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './App.css';
 import L from 'leaflet';
@@ -204,68 +204,81 @@ function FullPageMap() {
 
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px' }}>
-        <div style={{ flexGrow: 1 }}>
-          <label>
-            Radius (miles): {localRadius}
-            <input 
-              type="range"
-              value={localRadius}
-              onChange={handleSliderChange}
-              onMouseUp={commitRadiusChange}
-              onTouchEnd={commitRadiusChange} //for mobile
-              onBlur={commitRadiusChange} 
-              min="0" 
-              max="500" 
-              step="10"
-              style={{ marginLeft: '10px', width: '100%' }}
-            />
-          </label>
-        </div>
-        
-        <div style={{ flexGrow: 2, textAlign: 'right'}}> 
-          <b>Airstrip Map</b>
-        </div>
-
-        <div style={{ flexGrow: 2, textAlign: 'right', fontSize: 'small' , paddingLeft: '5px'}}>
-          A worse $100 hamburger finder with state airport directory info and pdf images. Data may be inaccurate and outdated. Proceed at your own risk.
-        </div>
-        
-      </div>
-
-      <div style={{ position: 'absolute', top: 70, left: 65, zIndex: 1000, backgroundColor: 'white', padding: '10px', borderRadius: '5px' }}>
-        <b>Airport Identifier</b> <br/>
-        <input
-          type="text"
-          placeholder="Location Identifier"
-          value={locationIdentifier}
-          onChange={(e) => setLocationIdentifier(e.target.value.toUpperCase())} // Assuming identifiers are uppercase
-        />
-        <button onClick={handleSetLocationFromIdentifier}
-          className="search-button">
-        🔎
-        </button>
-
-        <br/><br/>
-        <div>
-          <b className="filter-title">Filter Options</b>
-        {['courtesy_car', 'bicycles', 'camping', 'meals'].map((option) => (
-          <div key={option} className="filter-option">
-            <input
-              type="checkbox"
-              id={option}
-              checked={filter[option]}
-              onChange={(e) => setFilter({ ...filter, [option]: e.target.checked })}
-              className="filter-checkbox"
-            />
-            <label htmlFor={option} className="filter-label">
-              {option.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
-            </label>
+      <header className="navbar">
+        <div className="navbar-content">
+          <div className="navbar-left">
+            <div className="radius-control">
+              <label className="radius-label">
+                Radius: {localRadius} miles
+              </label>
+              <input 
+                type="range"
+                value={localRadius}
+                onChange={handleSliderChange}
+                onMouseUp={commitRadiusChange}
+                onTouchEnd={commitRadiusChange}
+                onBlur={commitRadiusChange} 
+                min="0" 
+                max="500" 
+                step="10"
+                className="radius-slider"
+              />
+            </div>
           </div>
-        ))}
-      </div>
+          
+          <div className="navbar-center">
+            <h1 className="site-title">Airstrip Map</h1>
+          </div>
 
-    </div>
+          <div className="navbar-right">
+            <p className="site-description">
+               State airport directory PDFs mapped with amenities data - camping, bikes, courtesy cars
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <div className="control-panel">
+        <div className="search-section">
+          <label className="section-title">Airport Identifier</label>
+          <div className="search-input-group">
+            <input
+              type="text"
+              placeholder="Location Identifier"
+              value={locationIdentifier}
+              onChange={(e) => setLocationIdentifier(e.target.value.toUpperCase())}
+              className="search-input"
+            />
+            <button 
+              onClick={handleSetLocationFromIdentifier}
+              className="search-button"
+              aria-label="Search"
+            >
+              🔎
+            </button>
+          </div>
+        </div>
+
+        <div className="filter-section">
+          <label className="section-title">Filter Options</label>
+          <div className="filter-grid">
+            {['courtesy_car', 'bicycles', 'camping', 'meals'].map((option) => (
+              <div key={option} className="filter-option">
+                <input
+                  type="checkbox"
+                  id={option}
+                  checked={filter[option]}
+                  onChange={(e) => setFilter({ ...filter, [option]: e.target.checked })}
+                  className="filter-checkbox"
+                />
+                <label htmlFor={option} className="filter-label">
+                  {option.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     <div>
       <button 
         onClick={getUserLocation} 
@@ -275,14 +288,16 @@ function FullPageMap() {
       </button>
     </div>
     
-    <div style={{ position: 'absolute', top: '70px', right: '24px', zIndex: 1000, fontSize: '24px', }}>
-      <button onClick={() => setIsTextBoxVisible(!isTextBoxVisible)}
-      className="icon-button"
-        >
+    <div className="info-panel">
+      <button 
+        onClick={() => setIsTextBoxVisible(!isTextBoxVisible)}
+        className="info-button"
+        aria-label="Information"
+      >
         ℹ
       </button>
       {isTextBoxVisible && (
-        <div ref={textBoxRef} style={{ fontSize: '18px', marginTop: '10px', border: '1px solid #ccc', padding: '10px', backgroundColor: 'white', maxWidth: '400px', padding: '20px', borderRadius: '10px',  }}>
+        <div ref={textBoxRef} className="info-dropdown">
           This site features public airport destinations using data from state airport directories, including directory images.
           <br/><br/>The quality of data depends on what's published in these directories. 
           <br/><br/>Some states don't publish these and those airports won't be identified here.
@@ -296,7 +311,9 @@ function FullPageMap() {
         center={userLocation || [48.192, -114.316]}
         zoom={8} 
         ref={mapRef}
+        zoomControl={false}
       >
+        <ZoomControl position="bottomright" />
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {userLocation && (
           <>
