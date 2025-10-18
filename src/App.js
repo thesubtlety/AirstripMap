@@ -54,18 +54,66 @@ function ImageModal({ isOpen, onClose, imageUrl }) {
 
   return (
     <div style={{
-      position: 'fixed', 
-      top: 0, 
-      left: 0, 
-      right: 0, 
-      bottom: 0, 
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 1000, // Ensure it's above other content
+      zIndex: 1000,
     }} onClick={onClose}>
       <img src={imageUrl} alt="Modal" style={{ maxWidth: '90%', maxHeight: '90%' }} />
+    </div>
+  );
+}
+
+function InfoModal({ isOpen, onClose }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label="Close">×</button>
+
+        <h2 className="modal-title">About Airstrip Map</h2>
+
+        <div className="modal-body">
+          <p>
+            This site features public airport destinations using data from state airport directories,
+            including directory images.
+          </p>
+          <p>
+            The quality of data depends on what's published in these directories. Some states don't
+            publish these and those airports won't be identified here.
+          </p>
+          <p>
+            Check out other great resources like <a href="https://pirep.io" target="_blank" rel="noopener noreferrer">pirep.io</a> and <a href="https://skyvector.com" target="_blank" rel="noopener noreferrer">skyvector.com</a>.
+          </p>
+
+          <div className="modal-links">
+            <a
+              href="https://github.com/thesubtlety/airstripmap"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="modal-link"
+            >
+              <span>⭐</span> View on GitHub
+            </a>
+
+            <a
+              href="https://buymeacoffee.com/noahpotti"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="modal-link modal-link-primary"
+            >
+              <span>☕</span> Buy Me a Coffee
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -78,8 +126,7 @@ function FullPageMap() {
   const [locationIdentifier, setLocationIdentifier] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageUrl, setCurrentImageUrl] = useState('');
-  const [isTextBoxVisible, setIsTextBoxVisible] = useState(false);
-  const textBoxRef = useRef(null);
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
 
@@ -89,24 +136,27 @@ function FullPageMap() {
     camping: false,
     meals: false,
   });
+
+  const [collapsedSections, setCollapsedSections] = useState({
+    radius: false,
+    search: false,
+    filter: false,
+  });
+
+  const [controlPanelCollapsed, setControlPanelCollapsed] = useState(false);
+
+  const toggleSection = (section) => {
+    setCollapsedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
   
   const handleOpenModal = (ident) => {
     setCurrentImageUrl(`${path}/images/${ident}.png`);
     setIsModalOpen(true);
   };
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (textBoxRef.current && !textBoxRef.current.contains(event.target)) {
-        setIsTextBoxVisible(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   useEffect(() => {
     fetch(`${path}/data.json`)
@@ -206,104 +256,115 @@ function FullPageMap() {
     <div>
       <header className="navbar">
         <div className="navbar-content">
-          <div className="navbar-left">
+          <div className="navbar-header-group">
+            <h1 className="site-title">Airstrip Map</h1>
+            <button
+              onClick={() => setIsInfoModalOpen(true)}
+              className="info-button-header"
+              aria-label="Information"
+            >
+              ℹ
+            </button>
+          </div>
+          <p className="site-description">
+             State airport directory PDFs mapped with amenities data - camping, bikes, courtesy cars
+          </p>
+        </div>
+      </header>
+
+      <div className="control-panel">
+        <div className="control-panel-header" onClick={() => setControlPanelCollapsed(!controlPanelCollapsed)}>
+          <span className="control-panel-title">Controls</span>
+          <span className="collapse-icon">{controlPanelCollapsed ? '▼' : '▲'}</span>
+        </div>
+        {!controlPanelCollapsed && (
+          <div className="control-panel-content">
+        <div className="radius-section">
+          <div className="section-header" onClick={() => toggleSection('radius')}>
+            <label className="section-title">Radius</label>
+            <span className="collapse-icon">{collapsedSections.radius ? '▼' : '▲'}</span>
+          </div>
+          {!collapsedSections.radius && (
             <div className="radius-control">
               <label className="radius-label">
-                Radius: {localRadius} miles
+                {localRadius} miles
               </label>
-              <input 
+              <input
                 type="range"
                 value={localRadius}
                 onChange={handleSliderChange}
                 onMouseUp={commitRadiusChange}
                 onTouchEnd={commitRadiusChange}
-                onBlur={commitRadiusChange} 
-                min="0" 
-                max="500" 
+                onBlur={commitRadiusChange}
+                min="0"
+                max="500"
                 step="10"
                 className="radius-slider"
               />
             </div>
-          </div>
-          
-          <div className="navbar-center">
-            <h1 className="site-title">Airstrip Map</h1>
-          </div>
-
-          <div className="navbar-right">
-            <p className="site-description">
-               State airport directory PDFs mapped with amenities data - camping, bikes, courtesy cars
-            </p>
-          </div>
+          )}
         </div>
-      </header>
 
-      <div className="control-panel">
         <div className="search-section">
-          <label className="section-title">Airport Identifier</label>
-          <div className="search-input-group">
-            <input
-              type="text"
-              placeholder="Location Identifier"
-              value={locationIdentifier}
-              onChange={(e) => setLocationIdentifier(e.target.value.toUpperCase())}
-              className="search-input"
-            />
-            <button 
-              onClick={handleSetLocationFromIdentifier}
-              className="search-button"
-              aria-label="Search"
-            >
-              🔎
-            </button>
+          <div className="section-header" onClick={() => toggleSection('search')}>
+            <label className="section-title">Airport Lookup</label>
+            <span className="collapse-icon">{collapsedSections.search ? '▼' : '▲'}</span>
           </div>
+          {!collapsedSections.search && (
+            <div className="search-input-group">
+              <input
+                type="text"
+                placeholder="Location Identifier"
+                value={locationIdentifier}
+                onChange={(e) => setLocationIdentifier(e.target.value.toUpperCase())}
+                className="search-input"
+              />
+              <button
+                onClick={handleSetLocationFromIdentifier}
+                className="search-button"
+                aria-label="Search"
+              >
+                🔎
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="filter-section">
-          <label className="section-title">Filter Options</label>
-          <div className="filter-grid">
-            {['courtesy_car', 'bicycles', 'camping', 'meals'].map((option) => (
-              <div key={option} className="filter-option">
-                <input
-                  type="checkbox"
-                  id={option}
-                  checked={filter[option]}
-                  onChange={(e) => setFilter({ ...filter, [option]: e.target.checked })}
-                  className="filter-checkbox"
-                />
-                <label htmlFor={option} className="filter-label">
-                  {option.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
-                </label>
-              </div>
-            ))}
+          <div className="section-header" onClick={() => toggleSection('filter')}>
+            <label className="section-title">Filter Options</label>
+            <span className="collapse-icon">{collapsedSections.filter ? '▼' : '▲'}</span>
           </div>
+          {!collapsedSections.filter && (
+            <div className="filter-grid">
+              {['courtesy_car', 'bicycles', 'camping', 'meals'].map((option) => (
+                <div key={option} className="filter-option">
+                  <input
+                    type="checkbox"
+                    id={option}
+                    checked={filter[option]}
+                    onChange={(e) => setFilter({ ...filter, [option]: e.target.checked })}
+                    className="filter-checkbox"
+                  />
+                  <label htmlFor={option} className="filter-label">
+                    {option.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
+                  </label>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
+          </div>
+        )}
       </div>
-    <div>
-      <button 
-        onClick={getUserLocation} 
+
+      <div>
+      <button
+        onClick={getUserLocation}
         className='location-button'
       >
         ⌖
       </button>
-    </div>
-    
-    <div className="info-panel">
-      <button 
-        onClick={() => setIsTextBoxVisible(!isTextBoxVisible)}
-        className="info-button"
-        aria-label="Information"
-      >
-        ℹ
-      </button>
-      {isTextBoxVisible && (
-        <div ref={textBoxRef} className="info-dropdown">
-          This site features public airport destinations using data from state airport directories, including directory images.
-          <br/><br/>The quality of data depends on what's published in these directories. 
-          <br/><br/>Some states don't publish these and those airports won't be identified here.
-          <br/><br/>Check out other great resources like pirep.io and skyvector.com.
-        </div>
-      )}
     </div>
 
       <MapContainer 
@@ -407,6 +468,7 @@ function FullPageMap() {
 
       </MapContainer>
       <ImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} imageUrl={currentImageUrl} />
+      <InfoModal isOpen={isInfoModalOpen} onClose={() => setIsInfoModalOpen(false)} />
     </div>
     
   );
