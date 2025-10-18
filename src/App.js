@@ -127,8 +127,11 @@ function FullPageMap() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageUrl, setCurrentImageUrl] = useState('');
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
+  const searchDropdownRef = useRef(null);
 
   const [filter, setFilter] = useState({
     courtesy_car: false,
@@ -156,6 +159,19 @@ function FullPageMap() {
     setCurrentImageUrl(`${path}/images/${ident}.png`);
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (searchDropdownRef.current && !searchDropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
 
   useEffect(() => {
@@ -207,18 +223,45 @@ function FullPageMap() {
     );
   };
 
+  const handleSearchInputChange = (e) => {
+    const value = e.target.value.toUpperCase();
+    setLocationIdentifier(value);
+
+    if (value.length >= 3) {
+      const fuse = new Fuse(items, {
+        keys: ['id', 'name'],
+        threshold: 0.3,
+      });
+
+      const results = fuse.search(value);
+      setSearchResults(results.slice(0, 10)); // Limit to 10 results
+      setShowDropdown(results.length > 0);
+    } else {
+      setSearchResults([]);
+      setShowDropdown(false);
+    }
+  };
+
+  const handleSelectAirport = (airport) => {
+    setLocationIdentifier(airport.id);
+    setUserLocation([airport.latitude, airport.longitude]);
+    mapRef.current.flyTo([airport.latitude, airport.longitude], 8);
+    setShowDropdown(false);
+  };
+
   const handleSetLocationFromIdentifier = () => {
     const fuse = new Fuse(items, {
-        keys: ['id', 'name'],      // Specify fields to search by
-        threshold: 0.3,            // Adjust this to control match sensitivity (0 = exact match, 1 = match anything)
+        keys: ['id', 'name'],
+        threshold: 0.3,
     });
 
     const results = fuse.search(locationIdentifier);
-    
+
     if (results.length > 0) {
-        const foundLocation = results[0].item; // Get the first matching result
+        const foundLocation = results[0].item;
         setUserLocation([foundLocation.latitude, foundLocation.longitude]);
         mapRef.current.flyTo([foundLocation.latitude, foundLocation.longitude], 8);
+        setShowDropdown(false);
     } else {
         alert('Location identifier not found.');
     }
@@ -311,21 +354,42 @@ function FullPageMap() {
             <span className="collapse-icon">{collapsedSections.search ? '▼' : '▲'}</span>
           </div>
           {!collapsedSections.search && (
-            <div className="search-input-group">
-              <input
-                type="text"
-                placeholder="Location Identifier"
-                value={locationIdentifier}
-                onChange={(e) => setLocationIdentifier(e.target.value.toUpperCase())}
-                className="search-input"
-              />
-              <button
-                onClick={handleSetLocationFromIdentifier}
-                className="search-button"
-                aria-label="Search"
-              >
-                🔎
-              </button>
+            <div className="search-container" ref={searchDropdownRef}>
+              <div className="search-input-group">
+                <input
+                  type="text"
+                  placeholder="Location Identifier"
+                  value={locationIdentifier}
+                  onChange={handleSearchInputChange}
+                  onFocus={() => {
+                    if (locationIdentifier.length >= 3 && searchResults.length > 0) {
+                      setShowDropdown(true);
+                    }
+                  }}
+                  className="search-input"
+                />
+                <button
+                  onClick={handleSetLocationFromIdentifier}
+                  className="search-button"
+                  aria-label="Search"
+                >
+                  🔎
+                </button>
+              </div>
+              {showDropdown && searchResults.length > 0 && (
+                <div className="search-dropdown">
+                  {searchResults.map((result) => (
+                    <div
+                      key={result.item.id}
+                      className="search-dropdown-item"
+                      onClick={() => handleSelectAirport(result.item)}
+                    >
+                      <div className="search-dropdown-item-id">{result.item.id}</div>
+                      <div className="search-dropdown-item-name">{result.item.name}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
