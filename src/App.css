@@ -634,12 +634,12 @@
   }
 
   .location-button {
-    bottom: 80px;
+    bottom: 20px;
     right: 16px;
   }
 
   .leaflet-bottom.leaflet-right {
-    bottom: 140px !important;
+    bottom: 160px !important;
     right: 16px !important;
   }
 }
@@ -670,7 +670,8 @@
   }
 
   .location-button {
-    bottom: 100px;
+    bottom: 20px;
+    right: 16px;
   }
 
   .leaflet-bottom.leaflet-right {

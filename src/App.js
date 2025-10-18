@@ -160,11 +160,25 @@ function FullPageMap() {
 
   const [collapsedSections, setCollapsedSections] = useState({
     radius: true,
-    search: false,
-    filter: false,
+    search: true,
+    filter: true,
   });
 
-  const [controlPanelCollapsed, setControlPanelCollapsed] = useState(false);
+  const [controlPanelCollapsed, setControlPanelCollapsed] = useState(true);
+
+  const toggleControlPanel = () => {
+    const newCollapsedState = !controlPanelCollapsed;
+    setControlPanelCollapsed(newCollapsedState);
+
+    // When expanding the control panel, also expand search and filter sections
+    if (!newCollapsedState) {
+      setCollapsedSections(prev => ({
+        ...prev,
+        search: false,
+        filter: false
+      }));
+    }
+  };
 
   const toggleSection = (section) => {
     setCollapsedSections(prev => ({
@@ -357,7 +371,7 @@ function FullPageMap() {
       </header>
 
       <div className="control-panel">
-        <div className="control-panel-header" onClick={() => setControlPanelCollapsed(!controlPanelCollapsed)}>
+        <div className="control-panel-header" onClick={toggleControlPanel}>
           <span className="control-panel-title">Controls</span>
           <span className="collapse-icon">{controlPanelCollapsed ? '▼' : '▲'}</span>
         </div>
