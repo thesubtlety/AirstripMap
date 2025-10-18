@@ -141,7 +141,7 @@ function FullPageMap() {
   });
 
   const [collapsedSections, setCollapsedSections] = useState({
-    radius: false,
+    radius: true,
     search: false,
     filter: false,
   });
