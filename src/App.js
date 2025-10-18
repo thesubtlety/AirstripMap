@@ -17,6 +17,13 @@ const userLocationIcon = L.icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 });
+
+const baseAirportIcon = L.divIcon({
+  className: 'base-airport-marker',
+  html: '<div class="base-airport-dot"></div>',
+  iconSize: [6, 6],
+  iconAnchor: [3, 3],
+});
 const createColoredIcon = (fieldName, size) => {
   return L.divIcon({
     className: "custom-div-icon",
@@ -129,6 +136,9 @@ function FullPageMap() {
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [showAllAirports, setShowAllAirports] = useState(false);
+  const [allAirports, setAllAirports] = useState([]);
+  const [zoomLevel, setZoomLevel] = useState(8);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
   const searchDropdownRef = useRef(null);
@@ -178,23 +188,43 @@ function FullPageMap() {
     fetch(`${path}/data.json`)
       .then(response => response.json())
       .then(data => {
-        // Access the 'items' array inside the fetched data
         const itemsData = data.items;
-  
-        // Optionally, you can log the items to verify their structure
-       //console.log("Fetched items:", itemsData);
-  
-        // Now, process and set the items to state as before
         const parsedItems = itemsData.map(item => ({
           ...item,
           latitude: parseFloat(item.latitude),
           longitude: parseFloat(item.longitude),
         })).filter(item => !isNaN(item.latitude) && !isNaN(item.longitude));
-  
+
         setItems(parsedItems);
       })
       .catch(error => console.error("Failed to load data:", error));
   }, []);
+
+  // Load all airports when toggle is enabled
+  useEffect(() => {
+    if (showAllAirports && allAirports.length === 0) {
+      fetch(`${path}/airports_all.json`)
+        .then(response => response.json())
+        .then(data => {
+          // Create Set of IDs from data.json to deduplicate
+          const priorityIds = new Set(items.map(item => item.id));
+
+          // Filter out airports that exist in data.json
+          const dedupedAirports = data
+            .filter(airport => !priorityIds.has(airport.id))
+            .map(airport => ({
+              id: airport.id,
+              name: airport.name,
+              latitude: airport.lat,
+              longitude: airport.lon,
+              type: airport.type,
+            }));
+
+          setAllAirports(dedupedAirports);
+        })
+        .catch(error => console.error("Failed to load all airports:", error));
+    }
+  }, [showAllAirports, items, allAirports.length]);
 
   const handleSliderChange = (event) => {
     const newValue = Number(event.target.value);
@@ -270,10 +300,10 @@ function FullPageMap() {
   useEffect(() => {
     const map = mapRef.current;
 
-    const adjustIconSize = (zoomLevel) => {
-      const newSize = getIconSize(zoomLevel);
+    const adjustIconSize = (zoom) => {
+      const newSize = getIconSize(zoom);
       markersRef.current.forEach(marker => {
-        if (marker) { // Ensure marker is not null
+        if (marker) {
           const fieldName = marker.options.fieldName;
           if (marker.options.type === 'colored') {
             marker.setIcon(createColoredIcon(fieldName, newSize));
@@ -286,12 +316,15 @@ function FullPageMap() {
 
     if (map) {
       map.on('zoomend', () => {
-        const zoomLevel = map.getZoom();
-        console.log('zoom level: ' + zoomLevel);
-        adjustIconSize(zoomLevel);
+        const zoom = map.getZoom();
+        console.log('zoom level: ' + zoom);
+        setZoomLevel(zoom);
+        adjustIconSize(zoom);
       });
 
-      adjustIconSize(map.getZoom());
+      const initialZoom = map.getZoom();
+      setZoomLevel(initialZoom);
+      adjustIconSize(initialZoom);
     }
   }, []);
 
@@ -400,21 +433,36 @@ function FullPageMap() {
             <span className="collapse-icon">{collapsedSections.filter ? '▼' : '▲'}</span>
           </div>
           {!collapsedSections.filter && (
-            <div className="filter-grid">
-              {['courtesy_car', 'bicycles', 'camping', 'meals'].map((option) => (
-                <div key={option} className="filter-option">
-                  <input
-                    type="checkbox"
-                    id={option}
-                    checked={filter[option]}
-                    onChange={(e) => setFilter({ ...filter, [option]: e.target.checked })}
-                    className="filter-checkbox"
-                  />
-                  <label htmlFor={option} className="filter-label">
-                    {option.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
-                  </label>
-                </div>
-              ))}
+            <div>
+              <div className="filter-grid">
+                {['courtesy_car', 'bicycles', 'camping', 'meals'].map((option) => (
+                  <div key={option} className="filter-option">
+                    <input
+                      type="checkbox"
+                      id={option}
+                      checked={filter[option]}
+                      onChange={(e) => setFilter({ ...filter, [option]: e.target.checked })}
+                      className="filter-checkbox"
+                    />
+                    <label htmlFor={option} className="filter-label">
+                      {option.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
+                    </label>
+                  </div>
+                ))}
+              </div>
+              <div className="filter-separator"></div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  id="show_all_airports"
+                  checked={showAllAirports}
+                  onChange={(e) => setShowAllAirports(e.target.checked)}
+                  className="filter-checkbox"
+                />
+                <label htmlFor="show_all_airports" className="filter-label">
+                  Show All US Airports
+                </label>
+              </div>
             </div>
           )}
         </div>
@@ -529,6 +577,41 @@ function FullPageMap() {
           </Marker>
         ))}
         </MarkerClusterGroup>
+
+        {/* Base layer: All US airports (when enabled and zoomed in) */}
+        {showAllAirports && zoomLevel >= 8 && allAirports.length > 0 && (
+          <MarkerClusterGroup
+            showCoverageOnHover={false}
+            spiderfyOnEveryZoom={false}
+            disableClusteringAtZoom={11}
+            maxClusterRadius={30}
+            iconCreateFunction={(cluster) => {
+              const count = cluster.getChildCount();
+              return L.divIcon({
+                html: `<div class="base-airport-cluster">${count}</div>`,
+                className: 'base-airport-cluster-icon',
+                iconSize: [24, 24],
+              });
+            }}
+          >
+            {allAirports.map((airport, index) => (
+              <Marker
+                key={`base-${airport.id}-${index}`}
+                position={[airport.latitude, airport.longitude]}
+                icon={baseAirportIcon}
+              >
+                <Popup>
+                  <div style={{ fontSize: '14px' }}>
+                    <strong>{airport.name}</strong> ({airport.id})
+                  </div>
+                  <div style={{ fontSize: '12px', color: '#6b7280' }}>
+                    {airport.type?.replace('_', ' ')}
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+          </MarkerClusterGroup>
+        )}
 
       </MapContainer>
       <ImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} imageUrl={currentImageUrl} />
