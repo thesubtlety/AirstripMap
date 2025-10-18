@@ -30,6 +30,12 @@
   gap: 12px;
 }
 
+.navbar-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
 .site-title {
   margin: 0;
   font-size: 1.5rem;

@@ -355,6 +355,7 @@ function FullPageMap() {
       <header className="navbar">
         <div className="navbar-content">
           <div className="navbar-header-group">
+            <img src={`${path}/favicon.ico`} alt="Logo" className="navbar-logo" />
             <h1 className="site-title">Airstrip Map</h1>
             <button
               onClick={() => setIsInfoModalOpen(true)}
