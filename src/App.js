@@ -25,22 +25,30 @@ const baseAirportIcon = L.divIcon({
   iconAnchor: [3, 3],
 });
 const createColoredIcon = (fieldName, size) => {
+  // Calculate approximate text height based on font size (1.2em line height is typical)
+  const textHeight = Math.ceil(size.fontSize * 1.3);
+  const totalHeight = textHeight + size.height;
+
   return L.divIcon({
     className: "custom-div-icon",
-    html: `<div style="text-align: center; font-size:${size.fontSize}px"><b>${fieldName}</b></div><img src=${markerPath} style="width: ${size.width}px; height: ${size.height}px;"/>`,
-    iconSize: [size.width, size.height],
-    iconAnchor: [size.width / 2, size.height],
-    popupAnchor: [0, -size.height],
+    html: `<div style="text-align: center; font-size:${size.fontSize}px; line-height: ${size.fontSize}px; margin-bottom: 2px;"><b>${fieldName}</b></div><img src=${markerPath} style="width: ${size.width}px; height: ${size.height}px;"/>`,
+    iconSize: [size.width, totalHeight],
+    iconAnchor: [size.width / 2, totalHeight],
+    popupAnchor: [0, -totalHeight],
   });
 };
 
 const createGreyIcon = (fieldName, size) => {
+  // Calculate approximate text height based on font size (1.2em line height is typical)
+  const textHeight = Math.ceil(size.fontSize * 1.3);
+  const totalHeight = textHeight + size.height;
+
   return L.divIcon({
     className: "custom-div-icon",
-    html: `<div style="text-align: center; font-size:${size.fontSize}px"><b>${fieldName}</b></div><img src=${markerPathGrey} style="width: ${size.width}px; height: ${size.height}px;"/>`,
-    iconSize: [size.width, size.height],
-    iconAnchor: [size.width / 2, size.height],
-    popupAnchor: [0, -size.height],
+    html: `<div style="text-align: center; font-size:${size.fontSize}px; line-height: ${size.fontSize}px; margin-bottom: 2px;"><b>${fieldName}</b></div><img src=${markerPathGrey} style="width: ${size.width}px; height: ${size.height}px;"/>`,
+    iconSize: [size.width, totalHeight],
+    iconAnchor: [size.width / 2, totalHeight],
+    popupAnchor: [0, -totalHeight],
   });
 };
 
