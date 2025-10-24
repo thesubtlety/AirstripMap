@@ -97,12 +97,10 @@ function InfoModal({ isOpen, onClose }) {
 
         <div className="modal-body">
           <p>
-            This site features public airport destinations using data from state airport directories,
-            including directory images.
+            Find airports with camping, courtesy cars, bicycles, and nearby meals. View local airport directory images and FAA diagrams sourced from published state airport directories.
           </p>
           <p>
-            The quality of data depends on what's published in these directories. Some states don't
-            publish these and those airports won't be identified here.
+            Data availability depends on what states publish. Some states don't publish directories but you can still see airport locations by enabling "Show All US Airports" in the filter options.
           </p>
           <p>
             Check out other great resources like <a href="https://pirep.io" target="_blank" rel="noopener noreferrer">pirep.io</a> and <a href="https://skyvector.com" target="_blank" rel="noopener noreferrer">skyvector.com</a>.
@@ -147,6 +145,7 @@ function FullPageMap() {
   const [showAllAirports, setShowAllAirports] = useState(false);
   const [allAirports, setAllAirports] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(8);
+  const [airportDiagrams, setAirportDiagrams] = useState({});
   const mapRef = useRef(null);
   const markersRef = useRef([]);
   const searchDropdownRef = useRef(null);
@@ -160,24 +159,15 @@ function FullPageMap() {
 
   const [collapsedSections, setCollapsedSections] = useState({
     radius: true,
-    search: true,
-    filter: true,
   });
 
-  const [controlPanelCollapsed, setControlPanelCollapsed] = useState(true);
+  // Set initial state based on screen size - expanded on desktop, collapsed on mobile
+  const [controlPanelCollapsed, setControlPanelCollapsed] = useState(() => {
+    return typeof window !== 'undefined' ? window.innerWidth < 768 : true;
+  });
 
   const toggleControlPanel = () => {
-    const newCollapsedState = !controlPanelCollapsed;
-    setControlPanelCollapsed(newCollapsedState);
-
-    // When expanding the control panel, also expand search and filter sections
-    if (!newCollapsedState) {
-      setCollapsedSections(prev => ({
-        ...prev,
-        search: false,
-        filter: false
-      }));
-    }
+    setControlPanelCollapsed(!controlPanelCollapsed);
   };
 
   const toggleSection = (section) => {
@@ -220,6 +210,16 @@ function FullPageMap() {
         setItems(parsedItems);
       })
       .catch(error => console.error("Failed to load data:", error));
+  }, []);
+
+  // Load airport diagram lookup
+  useEffect(() => {
+    fetch(`${path}/airport_diagram_lookup.json`)
+      .then(response => response.json())
+      .then(data => {
+        setAirportDiagrams(data);
+      })
+      .catch(error => console.error("Failed to load airport diagrams:", error));
   }, []);
 
   // Load all airports when toggle is enabled
@@ -273,6 +273,27 @@ function FullPageMap() {
         console.log("Unable to retrieve your location");
       }
     );
+  };
+
+  const getAirportDiagramUrl = (airportId) => {
+    // Remove leading "K" only if identifier is 4 characters long and starts with "K"
+    const identifier = (airportId.length === 4 && airportId.startsWith('K'))
+      ? airportId.substring(1)
+      : airportId;
+
+    // Check if diagram exists in lookup
+    const pdfName = airportDiagrams[identifier];
+    if (!pdfName) {
+      return null;
+    }
+
+    // Get current year and month in YYMM format
+    const now = new Date();
+    const year = now.getFullYear().toString().substring(2); // Last 2 digits of year
+    const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Month with leading zero
+    const yymm = `${year}${month}`;
+
+    return `https://aeronav.faa.gov/d-tpp/${yymm}/${pdfName}`;
   };
 
   const handleSearchInputChange = (e) => {
@@ -366,7 +387,7 @@ function FullPageMap() {
             </button>
           </div>
           <p className="site-description">
-             State airport directory PDFs mapped with amenities data - camping, bikes, courtesy cars
+             State airport directory PDFs mapped with amenities data - camping, bikes, courtesy cars. Not to be used for navigation purposes, at your own risk, etc, etc.
           </p>
         </div>
       </header>
@@ -405,89 +426,79 @@ function FullPageMap() {
         </div>
 
         <div className="search-section">
-          <div className="section-header" onClick={() => toggleSection('search')}>
-            <label className="section-title">Airport Lookup</label>
-            <span className="collapse-icon">{collapsedSections.search ? '▼' : '▲'}</span>
-          </div>
-          {!collapsedSections.search && (
-            <div className="search-container" ref={searchDropdownRef}>
-              <div className="search-input-group">
-                <input
-                  type="text"
-                  placeholder="Location Identifier"
-                  value={locationIdentifier}
-                  onChange={handleSearchInputChange}
-                  onFocus={() => {
-                    if (locationIdentifier.length >= 3 && searchResults.length > 0) {
-                      setShowDropdown(true);
-                    }
-                  }}
-                  className="search-input"
-                />
-                <button
-                  onClick={handleSetLocationFromIdentifier}
-                  className="search-button"
-                  aria-label="Search"
-                >
-                  🔎
-                </button>
-              </div>
-              {showDropdown && searchResults.length > 0 && (
-                <div className="search-dropdown">
-                  {searchResults.map((result) => (
-                    <div
-                      key={result.item.id}
-                      className="search-dropdown-item"
-                      onClick={() => handleSelectAirport(result.item)}
-                    >
-                      <div className="search-dropdown-item-id">{result.item.id}</div>
-                      <div className="search-dropdown-item-name">{result.item.name}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
+          <label className="section-title">Airport Lookup</label>
+          <div className="search-container" ref={searchDropdownRef}>
+            <div className="search-input-group">
+              <input
+                type="text"
+                placeholder="Location Identifier"
+                value={locationIdentifier}
+                onChange={handleSearchInputChange}
+                onFocus={() => {
+                  if (locationIdentifier.length >= 3 && searchResults.length > 0) {
+                    setShowDropdown(true);
+                  }
+                }}
+                className="search-input"
+              />
+              <button
+                onClick={handleSetLocationFromIdentifier}
+                className="search-button"
+                aria-label="Search"
+              >
+                🔎
+              </button>
             </div>
-          )}
-        </div>
-
-        <div className="filter-section">
-          <div className="section-header" onClick={() => toggleSection('filter')}>
-            <label className="section-title">Filter Options</label>
-            <span className="collapse-icon">{collapsedSections.filter ? '▼' : '▲'}</span>
-          </div>
-          {!collapsedSections.filter && (
-            <div>
-              <div className="filter-grid">
-                {['courtesy_car', 'bicycles', 'camping', 'meals'].map((option) => (
-                  <div key={option} className="filter-option">
-                    <input
-                      type="checkbox"
-                      id={option}
-                      checked={filter[option]}
-                      onChange={(e) => setFilter({ ...filter, [option]: e.target.checked })}
-                      className="filter-checkbox"
-                    />
-                    <label htmlFor={option} className="filter-label">
-                      {option.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
-                    </label>
+            {showDropdown && searchResults.length > 0 && (
+              <div className="search-dropdown">
+                {searchResults.map((result) => (
+                  <div
+                    key={result.item.id}
+                    className="search-dropdown-item"
+                    onClick={() => handleSelectAirport(result.item)}
+                  >
+                    <div className="search-dropdown-item-id">{result.item.id}</div>
+                    <div className="search-dropdown-item-name">{result.item.name}</div>
                   </div>
                 ))}
               </div>
-              <div className="filter-separator"></div>
-              <div className="filter-option">
-                <input
-                  type="checkbox"
-                  id="show_all_airports"
-                  checked={showAllAirports}
-                  onChange={(e) => setShowAllAirports(e.target.checked)}
-                  className="filter-checkbox"
-                />
-                <label htmlFor="show_all_airports" className="filter-label">
-                  Show All US Airports
-                </label>
-              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="filter-section">
+          <label className="section-title">Filter Options</label>
+          <div>
+            <div className="filter-grid">
+              {['courtesy_car', 'bicycles', 'camping', 'meals'].map((option) => (
+                <div key={option} className="filter-option">
+                  <input
+                    type="checkbox"
+                    id={option}
+                    checked={filter[option]}
+                    onChange={(e) => setFilter({ ...filter, [option]: e.target.checked })}
+                    className="filter-checkbox"
+                  />
+                  <label htmlFor={option} className="filter-label">
+                    {option.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
+                  </label>
+                </div>
+              ))}
             </div>
-          )}
+            <div className="filter-separator"></div>
+            <div className="filter-option">
+              <input
+                type="checkbox"
+                id="show_all_airports"
+                checked={showAllAirports}
+                onChange={(e) => setShowAllAirports(e.target.checked)}
+                className="filter-checkbox"
+              />
+              <label htmlFor="show_all_airports" className="filter-label">
+                Show All US Airports
+              </label>
+            </div>
+          </div>
         </div>
           </div>
         )}
@@ -595,6 +606,12 @@ function FullPageMap() {
               <div style={{ fontSize: '14px' }}>
                 <a target="_blank" rel="noopener noreferrer" href={`https://www.airnav.com/airport/${filteredItem.id}`}>AirNav</a> &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a target="_blank" rel="noopener noreferrer" href={`https://www.skyvector.com/airport/${filteredItem.id}`}>SkyVector</a>
+                {getAirportDiagramUrl(filteredItem.id) && (
+                  <>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a target="_blank" rel="noopener noreferrer" href={getAirportDiagramUrl(filteredItem.id)}>FAA Diagram</a>
+                  </>
+                )}
               </div>
             </Popup>
           </Marker>
@@ -617,22 +634,42 @@ function FullPageMap() {
               });
             }}
           >
-            {allAirports.map((airport, index) => (
-              <Marker
-                key={`base-${airport.id}-${index}`}
-                position={[airport.latitude, airport.longitude]}
-                icon={baseAirportIcon}
-              >
-                <Popup>
-                  <div style={{ fontSize: '14px' }}>
-                    <strong>{airport.name}</strong> ({airport.id})
-                  </div>
-                  <div style={{ fontSize: '12px', color: '#6b7280' }}>
-                    {airport.type?.replace('_', ' ')}
-                  </div>
-                </Popup>
-              </Marker>
-            ))}
+            {allAirports.map((airport, index) => {
+              const diagramUrl = getAirportDiagramUrl(airport.id);
+              return (
+                <Marker
+                  key={`base-${airport.id}-${index}`}
+                  position={[airport.latitude, airport.longitude]}
+                  icon={baseAirportIcon}
+                >
+                  <Popup>
+                    <div style={{ fontSize: '14px' }}>
+                      <strong>{airport.name}</strong> ({airport.id})
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#6b7280' }}>
+                      {airport.type?.replace('_', ' ')}
+                    </div>
+                    {diagramUrl && (
+                      <div style={{ marginTop: '10px' }}>
+                        <a
+                          href={diagramUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            fontSize: '12px',
+                            color: '#2563eb',
+                            textDecoration: 'none',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          📄 View Airport Diagram
+                        </a>
+                      </div>
+                    )}
+                  </Popup>
+                </Marker>
+              );
+            })}
           </MarkerClusterGroup>
         )}
 
