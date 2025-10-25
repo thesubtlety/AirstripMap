@@ -108,21 +108,21 @@ function InfoModal({ isOpen, onClose }) {
 
           <div className="modal-links">
             <a
-              href="https://github.com/thesubtlety/airstripmap"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="modal-link"
-            >
-              <span>⭐</span> View on GitHub
-            </a>
-
-            <a
               href="https://buymeacoffee.com/noahpotti"
               target="_blank"
               rel="noopener noreferrer"
               className="modal-link modal-link-primary"
             >
               <span>☕</span> Buy Me a Coffee
+            </a>
+
+            <a
+              href="https://github.com/thesubtlety/airstripmap"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="modal-link"
+            >
+              <span>⭐</span> View on GitHub
             </a>
           </div>
         </div>
@@ -144,7 +144,7 @@ function FullPageMap() {
   const [searchResults, setSearchResults] = useState([]);
   const [showAllAirports, setShowAllAirports] = useState(false);
   const [allAirports, setAllAirports] = useState([]);
-  const [zoomLevel, setZoomLevel] = useState(8);
+  const [zoomLevel, setZoomLevel] = useState(5);
   const [airportDiagrams, setAirportDiagrams] = useState({});
   const mapRef = useRef(null);
   const markersRef = useRef([]);
@@ -513,10 +513,10 @@ function FullPageMap() {
       </button>
     </div>
 
-      <MapContainer 
+      <MapContainer
         style={{ height: '100vh', width: '100vw' }}
-        center={userLocation || [48.192, -114.316]}
-        zoom={8} 
+        center={userLocation || [39.8283, -98.5795]}
+        zoom={5} 
         ref={mapRef}
         zoomControl={false}
       >
@@ -564,7 +564,7 @@ function FullPageMap() {
             options={{ fieldName: filteredItem.name, type: filteredItem.courtesy_car || filteredItem.bicycles || filteredItem.camping || filteredItem.meals ? 'colored' : 'grey' }}
            >
             <Popup>
-              <div style={{ fontSize: '16px', marginBottom: '5px' }}>
+              <div style={{ fontSize: '15px', marginBottom: '5px' }}>
                 <strong>{filteredItem.name}</strong> ({filteredItem.id})
               </div>
               <div style={{ fontSize: '14px' }}>
@@ -618,13 +618,13 @@ function FullPageMap() {
         ))}
         </MarkerClusterGroup>
 
-        {/* Base layer: All US airports (when enabled and zoomed in) */}
-        {showAllAirports && zoomLevel >= 8 && allAirports.length > 0 && (
+        {/* Base layer: All US airports (when enabled) */}
+        {showAllAirports && allAirports.length > 0 && (
           <MarkerClusterGroup
             showCoverageOnHover={false}
-            spiderfyOnEveryZoom={false}
+            spiderfyOnEveryZoom={true}
             disableClusteringAtZoom={11}
-            maxClusterRadius={30}
+            maxClusterRadius={10}
             iconCreateFunction={(cluster) => {
               const count = cluster.getChildCount();
               return L.divIcon({
@@ -646,26 +646,30 @@ function FullPageMap() {
                     <div style={{ fontSize: '14px' }}>
                       <strong>{airport.name}</strong> ({airport.id})
                     </div>
-                    <div style={{ fontSize: '12px', color: '#6b7280' }}>
+                    <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '10px' }}>
                       {airport.type?.replace('_', ' ')}
                     </div>
-                    {diagramUrl && (
-                      <div style={{ marginTop: '10px' }}>
-                        <a
-                          href={diagramUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            fontSize: '12px',
-                            color: '#2563eb',
-                            textDecoration: 'none',
-                            fontWeight: 'bold'
-                          }}
-                        >
-                          📄 View Airport Diagram
-                        </a>
-                      </div>
-                    )}
+                    <div style={{ fontSize: '12px' }}>
+                      <a target="_blank" rel="noopener noreferrer" href={`https://www.airnav.com/airport/${airport.id}`}>AirNav</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                      <a target="_blank" rel="noopener noreferrer" href={`https://www.skyvector.com/airport/${airport.id}`}>SkyVector</a>
+                      {diagramUrl && (
+                        <>
+                          &nbsp;&nbsp;|&nbsp;&nbsp;
+                          <a
+                            href={diagramUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              color: '#2563eb',
+                              textDecoration: 'none',
+                              fontWeight: 'bold'
+                            }}
+                          >
+                            📄 Diagram
+                          </a>
+                        </>
+                      )}
+                    </div>
                   </Popup>
                 </Marker>
               );

@@ -426,9 +426,9 @@
 }
 
 .modal-link-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #e5edfa 0%, #a1bbf6 100%);
   color: white;
-  border-color: #3b82f6;
+  border-color: #a0bef0;
 }
 
 .modal-link-primary:hover {
@@ -513,16 +513,16 @@
 }
 
 .base-airport-dot {
-  width: 6px;
-  height: 6px;
-  background: rgba(107, 114, 128, 0.5);
-  border: 1px solid rgba(107, 114, 128, 0.8);
+  width: 10px;
+  height: 10px;
+  background: rgb(0 173 255 / 95%);
+  border: 1px solid rgba(71, 120, 218, 0.8);
   border-radius: 50%;
   transition: all 0.2s ease;
 }
 
 .base-airport-dot:hover {
-  background: rgba(107, 114, 128, 0.8);
+  background: rgba(3, 138, 201, 0.95);
   transform: scale(1.5);
 }
 
