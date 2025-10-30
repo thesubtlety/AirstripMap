@@ -97,7 +97,7 @@ function InfoModal({ isOpen, onClose }) {
 
         <div className="modal-body">
           <p>
-            Find airports with camping, courtesy cars, bicycles, and nearby meals. View local airport directory images and FAA diagrams sourced from published state airport directories.
+            Find airports with camping, courtesy cars, bicycles, and nearby meals. View local airport directory images and FAA diagrams sourced from published state airport directories. Data may be inaccurate; use at your own risk.
           </p>
           <p>
             Data availability depends on what states publish. Some states don't publish directories but you can still see airport locations by enabling "Show All US Airports" in the filter options.
