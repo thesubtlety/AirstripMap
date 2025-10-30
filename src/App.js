@@ -561,7 +561,7 @@ function FullPageMap() {
             url="https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Sectional/MapServer/tile/{z}/{y}/{x}"
             attribution='VFR Sectional Charts - <a href="https://www.faa.gov/air_traffic/flight_info/aeronav/">FAA</a>'
             minZoom={8}
-            maxZoom={12}
+            maxZoom={18}
             minNativeZoom={8}
             maxNativeZoom={12}
             tileSize={256}
@@ -580,6 +580,7 @@ function FullPageMap() {
           </>
         )}
         <MarkerClusterGroup
+            key={baseLayer}
             showCoverageOnHover={false}
             spiderfyOnEveryZoom={true}
             disableClusteringAtZoom={8}
@@ -670,6 +671,7 @@ function FullPageMap() {
         {/* Base layer: All US airports (when enabled) */}
         {showAllAirports && allAirports.length > 0 && (
           <MarkerClusterGroup
+            key={`${baseLayer}-all-airports`}
             showCoverageOnHover={false}
             spiderfyOnEveryZoom={true}
             disableClusteringAtZoom={11}

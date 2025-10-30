@@ -425,9 +425,9 @@
 }
 
 .modal-link-primary {
-  background: linear-gradient(135deg, #e5edfa 0%, #a1bbf6 100%);
+  background: linear-gradient(135deg, #fffda9 0%, #f6f6a1 100%);
   color: white;
-  border-color: #a0bef0;
+  border-color: #f6dc0a;
 }
 
 .modal-link-primary:hover {
