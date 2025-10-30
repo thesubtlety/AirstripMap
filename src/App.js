@@ -135,7 +135,7 @@ function FullPageMap() {
   const [userLocation, setUserLocation] = useState(null);
   const [radius, setRadius] = useState(100); // This is the "committed" state
   const [localRadius, setLocalRadius] = useState(100); // Initial value
-  const [items, setItems] = useState([]); 
+  const [items, setItems] = useState([]);
   const [locationIdentifier, setLocationIdentifier] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageUrl, setCurrentImageUrl] = useState('');
@@ -146,6 +146,7 @@ function FullPageMap() {
   const [allAirports, setAllAirports] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(5);
   const [airportDiagrams, setAirportDiagrams] = useState({});
+  const [baseLayer, setBaseLayer] = useState('street'); // 'street' or 'sectional'
   const mapRef = useRef(null);
   const markersRef = useRef([]);
   const searchDropdownRef = useRef(null);
@@ -221,6 +222,17 @@ function FullPageMap() {
       })
       .catch(error => console.error("Failed to load airport diagrams:", error));
   }, []);
+
+  // Auto-zoom to level 12 when switching to sectional chart
+  useEffect(() => {
+    if (baseLayer === 'sectional' && mapRef.current) {
+      const map = mapRef.current;
+      const currentZoom = map.getZoom();
+      if (currentZoom < 8) {
+        map.setZoom(12);
+      }
+    }
+  }, [baseLayer]);
 
   // Load all airports when toggle is enabled
   useEffect(() => {
@@ -511,6 +523,13 @@ function FullPageMap() {
       >
         ⌖
       </button>
+      <button
+        onClick={() => setBaseLayer(baseLayer === 'street' ? 'sectional' : 'street')}
+        className='layer-switcher-button'
+        title={baseLayer === 'street' ? 'Switch to Sectional Chart' : 'Switch to Street Map'}
+      >
+        {baseLayer === 'street' ? '🗺️' : '✈️'}
+      </button>
     </div>
 
       <MapContainer
@@ -521,7 +540,26 @@ function FullPageMap() {
         zoomControl={false}
       >
         <ZoomControl position="bottomright" />
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {baseLayer === 'street' ? (
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+        ) : (
+          <TileLayer
+            url="https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Sectional/MapServer/tile/{z}/{y}/{x}"
+            attribution='VFR Sectional Charts - <a href="https://www.faa.gov/air_traffic/flight_info/aeronav/">FAA</a>'
+            minZoom={8}
+            maxZoom={12}
+            minNativeZoom={8}
+            maxNativeZoom={12}
+            tileSize={256}
+            zoomOffset={0}
+            detectRetina={false}
+            updateWhenZooming={false}
+            keepBuffer={2}
+          />
+        )}
         {userLocation && (
           <>
             <Marker position={userLocation} icon={userLocationIcon}>

@@ -572,6 +572,33 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
+.layer-switcher-button {
+  position: absolute;
+  top: 120px;
+  right: 31px;
+  z-index: 1000;
+  font-size: 24px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  color: #3b82f6;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.layer-switcher-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
 /* Zoom Control Styling */
 .leaflet-bottom.leaflet-right {
   bottom: 180px !important;
@@ -647,6 +674,11 @@
     right: 16px;
   }
 
+  .layer-switcher-button {
+    top: 120px;
+    right: 16px;
+  }
+
   .leaflet-bottom.leaflet-right {
     bottom: 198px !important;
     right: 16px !important;
@@ -680,6 +712,11 @@
 
   .location-button {
     bottom: 30px;
+    right: 16px;
+  }
+
+  .layer-switcher-button {
+    top: 120px;
     right: 16px;
   }
 
