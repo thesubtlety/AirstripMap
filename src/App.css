@@ -135,7 +135,6 @@
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 280px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -548,7 +547,7 @@
 
 .location-button {
   position: absolute;
-  bottom: 100px;
+  bottom: 30px;
   right: 31px;
   z-index: 1000;
   font-size: 20px;
@@ -575,12 +574,16 @@
 
 /* Zoom Control Styling */
 .leaflet-bottom.leaflet-right {
-  bottom: 230px !important;
-  right: 25px !important;
+  bottom: 180px !important;
+  right: 31px !important;
 }
 
 .leaflet-control-attribution {
   display: none !important;
+}
+
+.leaflet-right .leaflet-control {
+  margin-right: 0 !important;
 }
 
 .leaflet-control-zoom {
@@ -597,9 +600,9 @@
   color: #3b82f6 !important;
   font-size: 18px !important;
   font-weight: bold !important;
-  width: 40px !important;
-  height: 40px !important;
-  line-height: 38px !important;
+  width: 48px !important;
+  height: 48px !important;
+  line-height: 46px !important;
   transition: all 0.2s ease !important;
 }
 
@@ -640,12 +643,12 @@
   }
 
   .location-button {
-    bottom: 20px;
+    bottom: 30px;
     right: 16px;
   }
 
   .leaflet-bottom.leaflet-right {
-    bottom: 160px !important;
+    bottom: 198px !important;
     right: 16px !important;
   }
 }
@@ -676,12 +679,12 @@
   }
 
   .location-button {
-    bottom: 20px;
+    bottom: 30px;
     right: 16px;
   }
 
   .leaflet-bottom.leaflet-right {
-    bottom: 160px !important;
+    bottom: 198px !important;
     right: 16px !important;
   }
 

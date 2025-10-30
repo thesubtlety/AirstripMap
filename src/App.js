@@ -387,7 +387,7 @@ function FullPageMap() {
             </button>
           </div>
           <p className="site-description">
-             State airport directory PDFs mapped with amenities data - camping, bikes, courtesy cars. Not to be used for navigation purposes, at your own risk, etc, etc.
+             Zoom to or search for your airport, then filter by amenities like camping, courtesy cars, bicycles, and nearby meals. Show all US airports for links to AirNav, SkyVector, and FAA diagrams.
           </p>
         </div>
       </header>
