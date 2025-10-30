@@ -572,31 +572,43 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-.layer-switcher-button {
+.layer-switcher-dropdown {
   position: absolute;
   top: 120px;
   right: 31px;
   z-index: 1000;
-  font-size: 24px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   color: #3b82f6;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 10px 12px;
+  min-width: 140px;
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 32px;
 }
 
-.layer-switcher-button:hover {
-  background: rgba(255, 255, 255, 1);
+.layer-switcher-dropdown:hover {
+  background-color: rgba(255, 255, 255, 1);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.layer-switcher-dropdown:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 /* Zoom Control Styling */
@@ -674,9 +686,11 @@
     right: 16px;
   }
 
-  .layer-switcher-button {
+  .layer-switcher-dropdown {
     top: 120px;
     right: 16px;
+    min-width: 120px;
+    font-size: 13px;
   }
 
   .leaflet-bottom.leaflet-right {
@@ -715,9 +729,13 @@
     right: 16px;
   }
 
-  .layer-switcher-button {
-    top: 120px;
+  .layer-switcher-dropdown {
+    top: 180px;
     right: 16px;
+    min-width: 110px;
+    font-size: 12px;
+    padding: 8px 10px;
+    padding-right: 28px;
   }
 
   .leaflet-bottom.leaflet-right {

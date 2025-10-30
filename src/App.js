@@ -146,7 +146,7 @@ function FullPageMap() {
   const [allAirports, setAllAirports] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(5);
   const [airportDiagrams, setAirportDiagrams] = useState({});
-  const [baseLayer, setBaseLayer] = useState('street'); // 'street' or 'sectional'
+  const [baseLayer, setBaseLayer] = useState('street'); // 'street', 'topo', or 'sectional'
   const mapRef = useRef(null);
   const markersRef = useRef([]);
   const searchDropdownRef = useRef(null);
@@ -523,13 +523,16 @@ function FullPageMap() {
       >
         ⌖
       </button>
-      <button
-        onClick={() => setBaseLayer(baseLayer === 'street' ? 'sectional' : 'street')}
-        className='layer-switcher-button'
-        title={baseLayer === 'street' ? 'Switch to Sectional Chart' : 'Switch to Street Map'}
+      <select
+        value={baseLayer}
+        onChange={(e) => setBaseLayer(e.target.value)}
+        className='layer-switcher-dropdown'
+        title='Select map layer'
       >
-        {baseLayer === 'street' ? '🗺️' : '✈️'}
-      </button>
+        <option value='street'>Street</option>
+        <option value='topo'>Topo</option>
+        <option value='sectional'>Sectional</option>
+      </select>
     </div>
 
       <MapContainer
@@ -540,12 +543,20 @@ function FullPageMap() {
         zoomControl={false}
       >
         <ZoomControl position="bottomright" />
-        {baseLayer === 'street' ? (
+        {baseLayer === 'street' && (
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-        ) : (
+        )}
+        {baseLayer === 'topo' && (
+          <TileLayer
+            url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+            attribution='Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)'
+            maxZoom={17}
+          />
+        )}
+        {baseLayer === 'sectional' && (
           <TileLayer
             url="https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Sectional/MapServer/tile/{z}/{y}/{x}"
             attribution='VFR Sectional Charts - <a href="https://www.faa.gov/air_traffic/flight_info/aeronav/">FAA</a>'
